@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12周目标追踪器 - 四象限任务视图</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/quadrant-view.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">12周目标追踪器</div>
+            <nav class="nav">
+                <a href="dashboard.html" class="nav-item">仪表盘</a>
+                <a href="goals.html" class="nav-item">目标管理</a>
+                <a href="tasks.html" class="nav-item active">任务管理</a>
+                <a href="analytics.html" class="nav-item">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-text" title="搜索">
+                <i class="icon">🔍</i>
+            </button>
+            <button class="btn btn-text" title="通知">
+                <i class="icon">🔔</i>
+            </button>
+            <button class="btn btn-text" title="设置">
+                <i class="icon">⚙️</i>
+            </button>
+            <div class="avatar">
+                <img src="../assets/avatar.png" alt="用户头像">
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main">
+        <!-- 工具栏 -->
+        <div class="toolbar">
+            <div class="toolbar-left">
+                <div class="view-selector">
+                    <span class="label">视图:</span>
+                    <select class="select">
+                        <option value="quadrant" selected>四象限</option>
+                        <option value="list">列表</option>
+                        <option value="calendar">日历</option>
+                    </select>
+                </div>
+                <div class="period-selector">
+                    <span class="label">周期:</span>
+                    <select class="select">
+                        <option value="2024Q1" selected>2024 Q1</option>
+                        <option value="2024Q2">2024 Q2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="toolbar-right">
+                <button class="btn btn-primary">
+                    <i class="icon">+</i>
+                    新建任务
+                </button>
+            </div>
+        </div>
+
+        <!-- 筛选栏 -->
+        <div class="filter-bar">
+            <div class="filter-group">
+                <select class="select">
+                    <option value="all">所有目标</option>
+                    <option value="1">提升产品开发效率</option>
+                    <option value="2">学习新技术</option>
+                </select>
+                <select class="select">
+                    <option value="all">所有状态</option>
+                    <option value="todo">未开始</option>
+                    <option value="in-progress">进行中</option>
+                    <option value="completed">已完成</option>
+                </select>
+                <div class="search-box">
+                    <input type="text" class="input" placeholder="搜索任务...">
+                    <i class="icon">🔍</i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四象限区域 -->
+        <div class="quadrant-container">
+            <!-- 重要且紧急 -->
+            <div class="quadrant important urgent">
+                <div class="quadrant-header">
+                    <h2>重要且紧急</h2>
+                    <span class="task-count">3个任务</span>
+                </div>
+                <div class="task-list" data-quadrant="1">
+                    <!-- 任务卡片示例 -->
+                    <div class="task-card" draggable="true">
+                        <div class="task-checkbox">
+                            <input type="checkbox" id="task1">
+                            <label for="task1"></label>
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title">完成产品原型设计</div>
+                            <div class="task-meta">
+                                <span class="task-goal">
+                                    <i class="icon">🎯</i>
+                                    提升产品开发效率
+                                </span>
+                                <span class="task-deadline">
+                                    <i class="icon">⏰</i>
+                                    今天 14:00
+                                </span>
+                            </div>
+                            <div class="task-tags">
+                                <span class="tag">设计</span>
+                                <span class="tag">原型</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 更多任务卡片 -->
+                </div>
+            </div>
+
+            <!-- 重要不紧急 -->
+            <div class="quadrant important">
+                <div class="quadrant-header">
+                    <h2>重要不紧急</h2>
+                    <span class="task-count">2个任务</span>
+                </div>
+                <div class="task-list" data-quadrant="2">
+                    <!-- 任务卡片 -->
+                </div>
+            </div>
+
+            <!-- 紧急不重要 -->
+            <div class="quadrant urgent">
+                <div class="quadrant-header">
+                    <h2>紧急不重要</h2>
+                    <span class="task-count">4个任务</span>
+                </div>
+                <div class="task-list" data-quadrant="3">
+                    <!-- 任务卡片 -->
+                </div>
+            </div>
+
+            <!-- 不重要不紧急 -->
+            <div class="quadrant">
+                <div class="quadrant-header">
+                    <h2>不重要不紧急</h2>
+                    <span class="task-count">1个任务</span>
+                </div>
+                <div class="task-list" data-quadrant="4">
+                    <!-- 任务卡片 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 批量操作栏 -->
+        <div class="batch-actions">
+            <div class="selection-info">
+                已选择: <span class="selected-count">0</span> 项
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-text" disabled>
+                    <i class="icon">📋</i>
+                    批量操作
+                </button>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

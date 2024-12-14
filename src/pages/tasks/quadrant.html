@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四象限任务视图 - 12周目标追踪器</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <link rel="stylesheet" href="../../styles/quadrant.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- 页面头部 -->
+        <header class="page-header">
+            <div class="header-content">
+                <h1>四象限任务视图</h1>
+                <p class="subtitle">使用艾森豪威尔矩阵管理任务优先级</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-text" id="filterBtn">
+                    <i class="icon">🔍</i>
+                    筛选
+                </button>
+                <button class="btn btn-primary" id="createTaskBtn">
+                    <i class="icon">➕</i>
+                    新建任务
+                </button>
+            </div>
+        </header>
+
+        <!-- 筛选面板 -->
+        <div class="filter-panel" id="filterPanel">
+            <div class="filter-group">
+                <label class="form-label">周期</label>
+                <select class="form-select" name="period">
+                    <option value="">全部周期</option>
+                    <option value="current" selected>当前周期</option>
+                    <option value="next">下个周期</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="form-label">目标</label>
+                <select class="form-select" name="goal">
+                    <option value="">全部目标</option>
+                    <option value="1">目标1</option>
+                    <option value="2">目标2</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="form-label">标签</label>
+                <div class="tag-select">
+                    <div class="selected-tags"></div>
+                    <input type="text" class="form-input" placeholder="输入标签名称">
+                </div>
+            </div>
+        </div>
+
+        <!-- 四象限视图 -->
+        <div class="quadrant-container">
+            <!-- 重要且紧急 -->
+            <div class="quadrant urgent important" data-type="urgent-important">
+                <div class="quadrant-header">
+                    <h2>重要且紧急</h2>
+                    <span class="task-count">3</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-card" draggable="true">
+                        <div class="task-header">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                <span>完成产品需求文档</span>
+                            </label>
+                            <div class="task-actions">
+                                <button class="btn btn-icon">
+                                    <i class="icon">📝</i>
+                                </button>
+                                <button class="btn btn-icon">
+                                    <i class="icon">⋮</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="task-info">
+                            <span class="deadline">今天 17:00</span>
+                            <span class="goal">提升产品质量</span>
+                        </div>
+                        <div class="task-tags">
+                            <span class="tag">文档</span>
+                            <span class="tag">产品</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 重要不紧急 -->
+            <div class="quadrant important" data-type="important">
+                <div class="quadrant-header">
+                    <h2>重要不紧急</h2>
+                    <span class="task-count">2</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-card" draggable="true">
+                        <div class="task-header">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                <span>学习新技术</span>
+                            </label>
+                            <div class="task-actions">
+                                <button class="btn btn-icon">
+                                    <i class="icon">📝</i>
+                                </button>
+                                <button class="btn btn-icon">
+                                    <i class="icon">⋮</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="task-info">
+                            <span class="deadline">3天后</span>
+                            <span class="goal">技术提升</span>
+                        </div>
+                        <div class="task-tags">
+                            <span class="tag">学习</span>
+                            <span class="tag">技术</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 紧急不重要 -->
+            <div class="quadrant urgent" data-type="urgent">
+                <div class="quadrant-header">
+                    <h2>紧急不重要</h2>
+                    <span class="task-count">1</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-card" draggable="true">
+                        <div class="task-header">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                <span>回复邮件</span>
+                            </label>
+                            <div class="task-actions">
+                                <button class="btn btn-icon">
+                                    <i class="icon">📝</i>
+                                </button>
+                                <button class="btn btn-icon">
+                                    <i class="icon">⋮</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="task-info">
+                            <span class="deadline">今天 14:00</span>
+                            <span class="goal">日常工作</span>
+                        </div>
+                        <div class="task-tags">
+                            <span class="tag">沟通</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 不重要不紧急 -->
+            <div class="quadrant" data-type="normal">
+                <div class="quadrant-header">
+                    <h2>不重要不紧急</h2>
+                    <span class="task-count">2</span>
+                </div>
+                <div class="task-list">
+                    <div class="task-card" draggable="true">
+                        <div class="task-header">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                <span>整理文档</span>
+                            </label>
+                            <div class="task-actions">
+                                <button class="btn btn-icon">
+                                    <i class="icon">📝</i>
+                                </button>
+                                <button class="btn btn-icon">
+                                    <i class="icon">⋮</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="task-info">
+                            <span class="deadline">5天后</span>
+                            <span class="goal">日常工作</span>
+                        </div>
+                        <div class="task-tags">
+                            <span class="tag">整理</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../scripts/quadrant.js"></script>
+</body>
+</html> 

@@ -1,0 +1,497 @@
+/* 页面标题 */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header-content h1 {
+    font-size: 24px;
+    color: var(--neutral-900);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--neutral-600);
+}
+
+/* 表单卡片 */
+.goal-form.card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 表单区块 */
+.form-section {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--neutral-300);
+}
+
+.form-section:last-child {
+    border-bottom: none;
+}
+
+.section-title {
+    font-size: 18px;
+    color: var(--neutral-800);
+    margin-bottom: 24px;
+}
+
+/* 表单组件 */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--neutral-700);
+    margin-bottom: 8px;
+}
+
+.form-label.required::after {
+    content: "*";
+    color: var(--error-500);
+    margin-left: 4px;
+}
+
+/* 输入框包装器 */
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper .input-status {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+}
+
+.input-wrapper .icon {
+    font-style: normal;
+    font-size: 16px;
+}
+
+.input-wrapper .icon.success {
+    color: var(--success-500);
+}
+
+.input-wrapper .icon.error {
+    color: var(--error-500);
+}
+
+/* 输入框验证状态 */
+.form-input:valid + .input-status .icon.success {
+    display: block;
+}
+
+.form-input:invalid:not(:placeholder-shown) + .input-status .icon.error {
+    display: block;
+}
+
+.form-input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--neutral-900);
+    transition: all 0.3s;
+}
+
+.form-input:hover {
+    border-color: var(--primary-400);
+}
+
+.form-input:focus {
+    border-color: var(--primary-500);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-100);
+}
+
+.form-input:invalid:not(:placeholder-shown) {
+    border-color: var(--error-500);
+}
+
+.form-input:invalid:not(:placeholder-shown):focus {
+    box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1);
+}
+
+textarea.form-input {
+    height: auto;
+    resize: vertical;
+    padding-bottom: 32px;
+}
+
+.textarea-counter {
+    position: absolute;
+    right: 12px;
+    bottom: 8px;
+    font-size: 12px;
+    color: var(--neutral-500);
+}
+
+.form-help {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--neutral-600);
+}
+
+.form-error {
+    display: none;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--error-500);
+}
+
+.form-input:invalid:not(:placeholder-shown) ~ .form-error {
+    display: block;
+}
+
+/* 单选卡片 */
+.radio-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.radio-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radio-card .card-content {
+    padding: 16px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.radio-card:hover .card-content {
+    border-color: var(--primary-400);
+    background-color: var(--primary-100);
+}
+
+.radio-card input[type="radio"]:checked + .card-content {
+    border-color: var(--primary-500);
+    background-color: var(--primary-100);
+    box-shadow: 0 0 0 2px var(--primary-100);
+}
+
+.radio-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.radio-card .title {
+    font-weight: 500;
+    color: var(--neutral-900);
+}
+
+.radio-card .desc {
+    font-size: 12px;
+    color: var(--neutral-600);
+    margin-bottom: 12px;
+}
+
+.radio-card .example {
+    font-size: 12px;
+    color: var(--neutral-600);
+    padding-top: 12px;
+    border-top: 1px dashed var(--neutral-300);
+}
+
+.radio-card .example .label {
+    color: var(--neutral-500);
+}
+
+/* 横向布局 */
+.form-row {
+    display: flex;
+    gap: 24px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+/* 目标数值组 */
+.target-value-group .input-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.frequency-select {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.frequency-select .label {
+    color: var(--neutral-600);
+}
+
+.target-preview {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--neutral-600);
+}
+
+.target-preview .total-value {
+    font-weight: 500;
+    color: var(--primary-600);
+}
+
+/* 提醒设置 */
+.reminder-settings {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.switch-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.switch-label {
+    font-size: 14px;
+    color: var(--neutral-700);
+}
+
+.time-select[data-enabled="false"] {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* 提醒选项卡片 */
+.reminder-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.checkbox-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkbox-card .card-content {
+    padding: 16px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.checkbox-card:hover .card-content {
+    border-color: var(--primary-400);
+    background-color: var(--primary-100);
+}
+
+.checkbox-card input[type="checkbox"]:checked + .card-content {
+    border-color: var(--primary-500);
+    background-color: var(--primary-100);
+}
+
+.checkbox-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.checkbox-card .title {
+    font-weight: 500;
+    color: var(--neutral-900);
+}
+
+.checkbox-card .desc {
+    font-size: 12px;
+    color: var(--neutral-600);
+    margin-bottom: 12px;
+}
+
+.threshold-select {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--neutral-300);
+}
+
+.threshold-select .label {
+    font-size: 12px;
+    color: var(--neutral-600);
+}
+
+.milestone-options {
+    display: flex;
+    gap: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--neutral-300);
+}
+
+/* 表单操作 */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-group {
+    display: flex;
+    gap: 8px;
+}
+
+/* 预览弹窗 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid var(--neutral-300);
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    color: var(--neutral-900);
+}
+
+.modal-body {
+    padding: 24px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px;
+    border-top: 1px solid var(--neutral-300);
+}
+
+/* 下拉菜单 */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+}
+
+.dropdown-menu.active {
+    display: block;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    width: 100%;
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: var(--neutral-700);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: var(--neutral-100);
+}
+
+.dropdown-item.text-danger {
+    color: var(--error-500);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--neutral-300);
+    margin: 4px 0;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .radio-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .reminder-options {
+        grid-template-columns: 1fr;
+    }
+
+    .reminder-settings {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .target-value-group .input-group {
+        flex-wrap: wrap;
+    }
+
+    .frequency-select {
+        width: 100%;
+        margin-top: 8px;
+    }
+} 

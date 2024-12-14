@@ -1,0 +1,165 @@
+/* 页面标题区域 */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-title h1 {
+    font-size: 24px;
+    color: var(--neutral-900);
+    margin-bottom: 8px;
+}
+
+.page-title p {
+    color: var(--neutral-600);
+}
+
+/* 筛选区域 */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 16px;
+    background-color: var(--neutral-100);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filter-group {
+    display: flex;
+    gap: 16px;
+}
+
+.filter-item {
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: var(--neutral-600);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-item:hover {
+    background-color: var(--primary-100);
+    color: var(--primary-600);
+}
+
+.filter-item.active {
+    background-color: var(--primary-600);
+    color: white;
+}
+
+.filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* 下拉选择框 */
+.select {
+    padding: 8px 16px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    background-color: white;
+    color: var(--neutral-800);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.select:hover {
+    border-color: var(--primary-400);
+}
+
+/* 目标网格 */
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+}
+
+/* 目标卡片 */
+.goal-card {
+    transition: all 0.3s;
+}
+
+.goal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.goal-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--neutral-900);
+    margin-bottom: 8px;
+}
+
+.goal-description {
+    color: var(--neutral-600);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.goal-progress {
+    margin-bottom: 16px;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    color: var(--neutral-600);
+    font-size: 12px;
+}
+
+.goal-meta {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+    color: var(--neutral-600);
+    font-size: 13px;
+}
+
+.goal-period,
+.goal-frequency {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.goal-footer {
+    display: flex;
+    gap: 12px;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .filter-section {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .filter-group {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    .filter-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .goals-grid {
+        grid-template-columns: 1fr;
+    }
+} 

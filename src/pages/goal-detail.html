@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12周目标追踪器 - 目标详情</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="goal-detail.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">12周目标追踪器</div>
+            <nav class="nav">
+                <a href="#" class="nav-item">仪表盘</a>
+                <a href="#" class="nav-item active">目标管理</a>
+                <a href="#" class="nav-item">任务管理</a>
+                <a href="#" class="nav-item">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-text">
+                <i class="icon">🔍</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">🔔</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">⚙️</i>
+            </button>
+            <div class="avatar">
+                <img src="avatar.png" alt="用户头像">
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main">
+        <!-- 页面标题和操作 -->
+        <div class="page-header">
+            <div class="header-content">
+                <h1>每天学习编程2小时</h1>
+                <span class="tag tag-success">进行中</span>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary">
+                    <i class="icon">📝</i>
+                    编辑目标
+                </button>
+                <button class="btn btn-text">
+                    <i class="icon">🗑️</i>
+                    删除目标
+                </button>
+            </div>
+        </div>
+
+        <!-- 目标信息和进度 -->
+        <div class="goal-overview">
+            <div class="card info-card">
+                <div class="card-body">
+                    <div class="info-item">
+                        <span class="label">目标类型</span>
+                        <span class="value">每日目标</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">开始时间</span>
+                        <span class="value">2024-01-01</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">结束时间</span>
+                        <span class="value">2024-03-24</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">目标数值</span>
+                        <span class="value">2小时/天</span>
+                    </div>
+                    <div class="info-item full-width">
+                        <span class="label">目标描述</span>
+                        <p class="value description">每天保持2小时的编程学习，包括视频教程学习、实践练习和项目开发。重点学习前端开发技术栈。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card progress-card">
+                <div class="card-body">
+                    <div class="progress-header">
+                        <h2>总体进度</h2>
+                        <span class="progress-text">已完成 45/84 天</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 53.6%">53.6%</div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="value">53.6%</span>
+                            <span class="label">完成率</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="value">39天</span>
+                            <span class="label">剩余天数</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="value">90小时</span>
+                            <span class="label">累计时长</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 打卡记录 -->
+        <section class="checkin-section">
+            <div class="section-header">
+                <h2>打卡记录</h2>
+                <button class="btn btn-primary">
+                    <i class="icon">✅</i>
+                    今日打卡
+                </button>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <!-- 打卡日历 -->
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <button class="btn btn-text">
+                                <i class="icon">◀️</i>
+                            </button>
+                            <h3>2024年1月</h3>
+                            <button class="btn btn-text">
+                                <i class="icon">▶️</i>
+                            </button>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-weekdays">
+                                <span>日</span>
+                                <span>一</span>
+                                <span>二</span>
+                                <span>三</span>
+                                <span>四</span>
+                                <span>五</span>
+                                <span>六</span>
+                            </div>
+                            <div class="calendar-days">
+                                <!-- 日期格子会通过JavaScript动态生成 -->
+                            </div>
+                        </div>
+                        <div class="calendar-legend">
+                            <div class="legend-item">
+                                <span class="dot completed"></span>
+                                <span>已完成</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="dot partial"></span>
+                                <span>部分完成</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="dot missed"></span>
+                                <span>未完成</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 完成情况统计 -->
+        <section class="stats-section">
+            <div class="section-header">
+                <h2>完成情况统计</h2>
+                <div class="time-range">
+                    <button class="btn btn-text active">周</button>
+                    <button class="btn btn-text">月</button>
+                    <button class="btn btn-text">总计</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>本周完成情况</h3>
+                        <div class="weekly-stats">
+                            <div class="day-stat">
+                                <span class="day">周一</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                                <span class="time">2.5h</span>
+                            </div>
+                            <div class="day-stat">
+                                <span class="day">周二</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 80%"></div>
+                                </div>
+                                <span class="time">1.6h</span>
+                            </div>
+                            <div class="day-stat">
+                                <span class="day">周三</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 90%"></div>
+                                </div>
+                                <span class="time">1.8h</span>
+                            </div>
+                            <div class="day-stat">
+                                <span class="day">周四</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                                <span class="time">2.2h</span>
+                            </div>
+                            <div class="day-stat">
+                                <span class="day">周五</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 70%"></div>
+                                </div>
+                                <span class="time">1.4h</span>
+                            </div>
+                            <div class="day-stat">
+                                <span class="day">周六</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 110%"></div>
+                                </div>
+                                <span class="time">2.2h</span>
+                            </div>
+                            <div class="day-stat">
+                                <span class="day">周日</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 95%"></div>
+                                </div>
+                                <span class="time">1.9h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3>趋势分析</h3>
+                        <div class="trend-chart">
+                            <!-- 这里将通过JavaScript添加趋势图表 -->
+                            <div class="chart-placeholder">
+                                图表加载中...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 笔记和反思 -->
+        <section class="notes-section">
+            <div class="section-header">
+                <h2>笔记和反思</h2>
+                <button class="btn btn-secondary">
+                    <i class="icon">✏️</i>
+                    添加笔记
+                </button>
+            </div>
+
+            <div class="notes-list">
+                <div class="card note-card">
+                    <div class="card-body">
+                        <div class="note-header">
+                            <div class="note-meta">
+                                <span class="date">2024-01-15</span>
+                                <span class="tag tag-info">周记</span>
+                            </div>
+                            <div class="note-actions">
+                                <button class="btn btn-text">
+                                    <i class="icon">✏️</i>
+                                </button>
+                                <button class="btn btn-text">
+                                    <i class="icon">🗑️</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="note-content">
+                            <p>这周的学习效果不错，特别是在React组件开发方面有了新的突破。遇到的主要问题是状态管理有点混乱，需要更系统地学习Redux。</p>
+                            <p>下周计划：</p>
+                            <ul>
+                                <li>完成Redux基础教程</li>
+                                <li>重构项目中的状态管理</li>
+                                <li>写一篇学习总结博客</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card note-card">
+                    <div class="card-body">
+                        <div class="note-header">
+                            <div class="note-meta">
+                                <span class="date">2024-01-10</span>
+                                <span class="tag tag-info">日记</span>
+                            </div>
+                            <div class="note-actions">
+                                <button class="btn btn-text">
+                                    <i class="icon">✏️</i>
+                                </button>
+                                <button class="btn btn-text">
+                                    <i class="icon">🗑️</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="note-content">
+                            <p>今天主要学习了React Hooks的使用，useEffect的依赖数组还需要多加练习。明天计划深入学习自定义Hook的开发。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

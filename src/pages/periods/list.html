@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>周期管理 - 12周目标追踪</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <link rel="stylesheet" href="../../styles/periods.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">12周目标追踪</div>
+            <nav class="nav">
+                <a href="../dashboard.html" class="nav-item">仪表盘</a>
+                <a href="../goal-list.html" class="nav-item">目标管理</a>
+                <a href="../task-list.html" class="nav-item">任务管理</a>
+                <a href="../analytics.html" class="nav-item">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn-icon" id="notificationBtn" title="通知">
+                <span class="icon">🔔</span>
+            </button>
+            <div class="user-menu">
+                <button class="avatar-btn" id="userMenuBtn" title="用户菜单">
+                    <div class="avatar">
+                        <img src="../../assets/avatar.png" alt="用户头像">
+                    </div>
+                </button>
+                <div class="dropdown-menu" id="userMenu">
+                    <div class="dropdown-header">
+                        <div class="user-info">
+                            <strong>张三</strong>
+                            <span>zhang@example.com</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a href="./list.html" class="dropdown-item active">
+                        <span class="icon">📅</span>
+                        周期管理
+                    </a>
+                    <a href="../settings.html" class="dropdown-item">
+                        <span class="icon">⚙️</span>
+                        设置
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item text-danger">
+                        <span class="icon">🚪</span>
+                        退出登录
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内���区 -->
+    <main class="main">
+        <!-- 页面标题和操作区 -->
+        <div class="page-header">
+            <div class="page-title">
+                <h1>周期管理</h1>
+                <p class="subtitle">管理和追踪您的12周目标周期</p>
+            </div>
+            <div class="page-actions">
+                <button class="btn btn-primary" id="createPeriod">
+                    <span class="icon">+</span>
+                    创建新周期
+                </button>
+            </div>
+        </div>
+
+        <!-- 筛选和搜索区 -->
+        <div class="filter-bar">
+            <div class="filter-groups">
+                <div class="filter-group">
+                    <label>状态：</label>
+                    <select id="statusFilter" class="select">
+                        <option value="all">全部</option>
+                        <option value="active">进行中</option>
+                        <option value="completed">已完成</option>
+                        <option value="planned">计划中</option>
+                        <option value="archived">已归档</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>排序：</label>
+                    <select id="sortOrder" class="select">
+                        <option value="newest">最新创建</option>
+                        <option value="oldest">最早创建</option>
+                        <option value="startDate">开始时间</option>
+                        <option value="progress">完成进度</option>
+                    </select>
+                </div>
+            </div>
+            <div class="search-group">
+                <input type="search" class="input" placeholder="搜索周期..." id="periodSearch">
+                <button class="btn-icon search-btn">
+                    <span class="icon">🔍</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 统计概览区 -->
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-value">3</div>
+                <div class="stat-label">进行中周期</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">12</div>
+                <div class="stat-label">总目标数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">75%</div>
+                <div class="stat-label">平均完成率</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">8</div>
+                <div class="stat-label">已完成周期</div>
+            </div>
+        </div>
+
+        <!-- 周期列表区 -->
+        <div class="periods-grid">
+            <!-- 进行中的周期 -->
+            <div class="period-card active">
+                <div class="period-header">
+                    <div class="period-status">进行中</div>
+                    <div class="period-menu">
+                        <button class="btn-icon">⋮</button>
+                    </div>
+                </div>
+                <h3 class="period-title">2024年第一季度</h3>
+                <div class="period-dates">
+                    <span class="icon">📅</span>
+                    <span>2024-01-01</span> 至 <span>2024-03-24</span>
+                </div>
+                <div class="period-progress">
+                    <div class="progress-info">
+                        <span>当前进度</span>
+                        <span>45%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 45%"></div>
+                    </div>
+                    <div class="progress-detail">
+                        <span>第6周 / 共12周</span>
+                        <span>剩余42天</span>
+                    </div>
+                </div>
+                <div class="period-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">目标总数</span>
+                        <span class="stat-value">5</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">已完成</span>
+                        <span class="stat-value">2</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">进行中</span>
+                        <span class="stat-value">3</span>
+                    </div>
+                </div>
+                <div class="period-actions">
+                    <button class="btn btn-primary">查看详情</button>
+                    <button class="btn btn-text">编辑</button>
+                </div>
+            </div>
+
+            <!-- 计划中的周期 -->
+            <div class="period-card planned">
+                <div class="period-header">
+                    <div class="period-status">计划中</div>
+                    <div class="period-menu">
+                        <button class="btn-icon">⋮</button>
+                    </div>
+                </div>
+                <h3 class="period-title">2024年第二季度</h3>
+                <div class="period-dates">
+                    <span class="icon">📅</span>
+                    <span>2024-04-01</span> 至 <span>2024-06-23</span>
+                </div>
+                <div class="period-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">计划目标</span>
+                        <span class="stat-value">3</span>
+                    </div>
+                </div>
+                <div class="period-actions">
+                    <button class="btn btn-primary">开始执行</button>
+                    <button class="btn btn-text">编辑</button>
+                </div>
+            </div>
+
+            <!-- 已完成的周期 -->
+            <div class="period-card completed">
+                <div class="period-header">
+                    <div class="period-status">已完成</div>
+                    <div class="period-menu">
+                        <button class="btn-icon">⋮</button>
+                    </div>
+                </div>
+                <h3 class="period-title">2023年第四季度</h3>
+                <div class="period-dates">
+                    <span class="icon">📅</span>
+                    <span>2023-10-01</span> 至 <span>2023-12-24</span>
+                </div>
+                <div class="period-progress">
+                    <div class="progress-info">
+                        <span>完成率</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="period-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">目标总数</span>
+                        <span class="stat-value">4</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">已完成</span>
+                        <span class="stat-value">4</span>
+                    </div>
+                </div>
+                <div class="period-actions">
+                    <button class="btn btn-primary">查看总结</button>
+                    <button class="btn btn-text">导出报告</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分页区域 -->
+        <div class="pagination">
+            <button class="btn btn-text" disabled>上一页</button>
+            <div class="page-numbers">
+                <button class="btn btn-text active">1</button>
+                <button class="btn btn-text">2</button>
+                <button class="btn btn-text">3</button>
+            </div>
+            <button class="btn btn-text">下一页</button>
+        </div>
+    </main>
+
+    <!-- 创建周期的模态框 -->
+    <div class="modal" id="periodModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>创建新周期</h2>
+                <button class="close-btn" aria-label="关闭">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="periodForm">
+                    <div class="form-group">
+                        <label for="periodName">周期名称</label>
+                        <input type="text" id="periodName" name="periodName" class="input" required
+                               placeholder="例如：2024年第一季度">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="startDate">开始日期</label>
+                            <input type="date" id="startDate" name="startDate" class="input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">结束日期</label>
+                            <input type="date" id="endDate" name="endDate" class="input" disabled>
+                            <small class="form-text">将自动计算为开始日期后的12周</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="periodDescription">描述</label>
+                        <textarea id="periodDescription" name="periodDescription" class="input" rows="3"
+                                  placeholder="请输入周期描述和主要目标..."></textarea>
+                    </div>
+                    
+                    <!-- 继承设置 -->
+                    <div class="form-section">
+                        <h3 class="section-title">继承设置</h3>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="inheritGoals" name="inheritGoals">
+                                继承上个周期未完成的目标
+                            </label>
+                        </div>
+                        <div class="form-group inherit-goals-select" style="display: none;">
+                            <label for="inheritGoalsList">选择要继承的目标</label>
+                            <select id="inheritGoalsList" name="inheritGoalsList" class="input" multiple>
+                                <option value="goal1">产品开发 - 70%完成</option>
+                                <option value="goal2">客户拓展 - 50%完成</option>
+                                <option value="goal3">团队建设 - 30%完成</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 模板设置 -->
+                    <div class="form-section">
+                        <h3 class="section-title">模板设置</h3>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="useTemplate" name="useTemplate">
+                                使用目标模板
+                            </label>
+                        </div>
+                        <div class="form-group template-select" style="display: none;">
+                            <label for="templateList">选择模板</label>
+                            <select id="templateList" name="templateList" class="input">
+                                <option value="">请选择模板...</option>
+                                <option value="template1">个人成长模板</option>
+                                <option value="template2">工作目标模板</option>
+                                <option value="template3">学习计划模板</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 提醒设置 -->
+                    <div class="form-section">
+                        <h3 class="section-title">提醒设置</h3>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="startReminder" name="startReminder" checked>
+                                周期开始提醒
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="endReminder" name="endReminder" checked>
+                                周期结束提醒
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="periodicReminder" name="periodicReminder" checked>
+                                定期提醒
+                            </label>
+                            <div class="periodic-reminder-settings" style="margin-top: 8px;">
+                                每 <input type="number" id="reminderInterval" name="reminderInterval" 
+                                       class="input input-sm" value="4" min="1" max="12"> 周提醒一次
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-text" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">创建</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 周期详情模态框 -->
+    <div class="modal" id="periodDetailModal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>2024年第一季度</h2>
+                <div class="modal-actions">
+                    <button class="btn btn-text">编辑</button>
+                    <button class="btn btn-text">归档</button>
+                    <button class="close-btn" aria-label="关闭">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="period-detail-header">
+                    <div class="status-info">
+                        <span class="status-badge active">进行中</span>
+                        <span class="period-time">第3周 / 共12周</span>
+                    </div>
+                    <div class="progress-bar-lg">
+                        <div class="progress" style="width: 30%"></div>
+                        <div class="progress-marker" style="left: 30%"></div>
+                    </div>
+                </div>
+
+                <div class="goals-overview">
+                    <h3>目标概览</h3>
+                    <div class="goals-grid">
+                        <div class="goals-column">
+                            <h4>进行中目标 (4)</h4>
+                            <ul class="goals-list">
+                                <li class="goal-item">
+                                    <span class="goal-progress">70%</span>
+                                    <span class="goal-name">产品开发</span>
+                                </li>
+                                <li class="goal-item">
+                                    <span class="goal-progress">45%</span>
+                                    <span class="goal-name">团队建设</span>
+                                </li>
+                                <li class="goal-item">
+                                    <span class="goal-progress">30%</span>
+                                    <span class="goal-name">客户拓展</span>
+                                </li>
+                                <li class="goal-item">
+                                    <span class="goal-progress">20%</span>
+                                    <span class="goal-name">技术升级</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="goals-column">
+                            <h4>已完成目标 (2)</h4>
+                            <ul class="goals-list">
+                                <li class="goal-item completed">
+                                    <span class="goal-progress">100%</span>
+                                    <span class="goal-name">市场调研</span>
+                                </li>
+                                <li class="goal-item completed">
+                                    <span class="goal-progress">100%</span>
+                                    <span class="goal-name">需求分析</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-section">
+                    <div class="chart-container">
+                        <h3>每周目标完成情况</h3>
+                        <div class="chart" id="weeklyProgressChart"></div>
+                        <div class="chart-legend">
+                            <span class="legend-item">
+                                <span class="legend-color" style="background: var(--primary-500)"></span>
+                                完成的目标
+                            </span>
+                            <span class="legend-item">
+                                <span class="legend-color" style="background: var(--neutral-300)"></span>
+                                总目标
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>时间投入分析</h3>
+                        <div class="chart" id="timeInvestmentChart"></div>
+                        <div class="chart-legend">
+                            <span class="legend-item">
+                                <span class="legend-color" style="background: var(--primary-500)"></span>
+                                产品开发 (40%)
+                            </span>
+                            <span class="legend-item">
+                                <span class="legend-color" style="background: var(--success-500)"></span>
+                                团队建设 (30%)
+                            </span>
+                            <span class="legend-item">
+                                <span class="legend-color" style="background: var(--warning-500)"></span>
+                                客户拓展 (20%)
+                            </span>
+                            <span class="legend-item">
+                                <span class="legend-color" style="background: var(--error-500)"></span>
+                                其他 (10%)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../scripts/periods.js"></script>
+</body>
+</html> 

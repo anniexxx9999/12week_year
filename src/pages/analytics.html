@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12周目标追踪器 - 数据分析</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="analytics.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">12周目标追踪器</div>
+            <nav class="nav">
+                <a href="#" class="nav-item">仪表盘</a>
+                <a href="#" class="nav-item">目标管理</a>
+                <a href="#" class="nav-item">任务管理</a>
+                <a href="#" class="nav-item active">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-text">
+                <i class="icon">🔍</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">🔔</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">⚙️</i>
+            </button>
+            <div class="avatar">
+                <img src="avatar.png" alt="用户头像">
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main">
+        <!-- 页面标题和操作 -->
+        <div class="page-header">
+            <div class="header-content">
+                <h1>数据分析</h1>
+                <p class="subtitle">深入了解你的目标完成情况和时间投入</p>
+            </div>
+            <div class="header-actions">
+                <div class="date-range-picker">
+                    <button class="btn btn-text active">本周期</button>
+                    <button class="btn btn-text">上周期</button>
+                    <button class="btn btn-text">自定义</button>
+                </div>
+                <button class="btn btn-secondary">
+                    <i class="icon">📊</i>
+                    导出报告
+                </button>
+            </div>
+        </div>
+
+        <!-- 总览面板 -->
+        <section class="overview-section">
+            <div class="stats-grid">
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <h3>目��完成率</h3>
+                        <div class="trend up">
+                            <i class="icon">↑</i>
+                            <span>12%</span>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-chart">
+                            <canvas id="goalCompletionChart"></canvas>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">75%</div>
+                            <div class="stat-label">已完成6个，进行中2个</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <h3>任务完成率</h3>
+                        <div class="trend up">
+                            <i class="icon">↑</i>
+                            <span>8%</span>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-chart">
+                            <canvas id="taskCompletionChart"></canvas>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">68%</div>
+                            <div class="stat-label">已完成45个，待完成21个</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <h3>时间投入</h3>
+                        <div class="trend down">
+                            <i class="icon">↓</i>
+                            <span>5%</span>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-chart">
+                            <canvas id="timeInvestmentChart"></canvas>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">89.5h</div>
+                            <div class="stat-label">本周期总投入时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <h3>效率指标</h3>
+                        <div class="trend up">
+                            <i class="icon">↑</i>
+                            <span>15%</span>
+                        </div>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-chart">
+                            <canvas id="efficiencyChart"></canvas>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">92%</div>
+                            <div class="stat-label">计划完成效率</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 目标分析 -->
+        <section class="analysis-section">
+            <div class="section-header">
+                <h2>目标分析</h2>
+                <div class="view-controls">
+                    <button class="btn btn-text active">周视图</button>
+                    <button class="btn btn-text">月视图</button>
+                    <button class="btn btn-text">总览</button>
+                </div>
+            </div>
+            <div class="analysis-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>目标完成趋势</h3>
+                        <div class="chart-legend">
+                            <span class="legend-item">
+                                <span class="dot" style="background-color: var(--primary-500)"></span>
+                                完成率
+                            </span>
+                            <span class="legend-item">
+                                <span class="dot" style="background-color: var(--primary-200)"></span>
+                                目标数
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="goalTrendChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="analysis-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>目标类型分布</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="goalTypeChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>目标状态分布</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="goalStatusChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 任务分析 -->
+        <section class="analysis-section">
+            <div class="section-header">
+                <h2>任务分析</h2>
+                <div class="filter-controls">
+                    <select class="form-select">
+                        <option value="all">所有目标</option>
+                        <option value="1">每天学习编程2小时</option>
+                        <option value="2">每周跑步3次</option>
+                    </select>
+                </div>
+            </div>
+            <div class="analysis-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>任务完成情况</h3>
+                        <div class="chart-legend">
+                            <span class="legend-item">
+                                <span class="dot" style="background-color: var(--success-500)"></span>
+                                已完成
+                            </span>
+                            <span class="legend-item">
+                                <span class="dot" style="background-color: var(--warning-500)"></span>
+                                进行中
+                            </span>
+                            <span class="legend-item">
+                                <span class="dot" style="background-color: var(--error-500)"></span>
+                                已延期
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="taskCompletionTrendChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="analysis-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>四象限分布</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="taskQuadrantChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>任务延期分析</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="taskDelayChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 时间分析 -->
+        <section class="analysis-section">
+            <div class="section-header">
+                <h2>时间分析</h2>
+                <div class="view-controls">
+                    <button class="btn btn-text active">日视图</button>
+                    <button class="btn btn-text">周视图</button>
+                    <button class="btn btn-text">月视图</button>
+                </div>
+            </div>
+            <div class="analysis-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>每日时间分配</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="dailyTimeChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="analysis-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>工作效率趋势</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="efficiencyTrendChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>时间利用率</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="timeUtilizationChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 导出报告弹窗 -->
+    <div class="modal" id="exportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>导出分析报告</h3>
+                <button class="btn btn-icon" id="closeModalBtn">
+                    <i class="icon">✕</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="exportForm">
+                    <div class="form-group">
+                        <label class="form-label">报告类型</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="reportType" value="weekly" checked>
+                                <span>周报告</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="reportType" value="monthly">
+                                <span>月报告</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="reportType" value="period">
+                                <span>12周总结报告</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">报告内容</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content" value="goals" checked>
+                                <span>目标完成情况</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content" value="tasks" checked>
+                                <span>任务统计分析</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content" value="time" checked>
+                                <span>时间投入分析</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content" value="efficiency">
+                                <span>效率指标分析</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content" value="suggestions">
+                                <span>改进建议</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">导出格式</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="format" value="pdf" checked>
+                                <span>PDF</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="format" value="excel">
+                                <span>Excel</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="format" value="word">
+                                <span>Word</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-text" id="cancelExportBtn">取消</button>
+                <button class="btn btn-primary" id="confirmExportBtn">导出报告</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="analytics.js"></script>
+</html> 

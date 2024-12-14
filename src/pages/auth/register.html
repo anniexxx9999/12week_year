@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - 12周目标追踪器</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <link rel="stylesheet" href="../../styles/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>注册12周目标追踪器</h1>
+                <p class="subtitle">创建你的账号，开始追踪目标</p>
+            </div>
+
+            <form class="auth-form" id="registerForm">
+                <div class="form-group">
+                    <label class="form-label required">用户名</label>
+                    <input type="text" class="form-input" name="username" placeholder="请输入用户名" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">邮箱</label>
+                    <input type="email" class="form-input" name="email" placeholder="请输入邮箱" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">密码</label>
+                    <div class="password-input">
+                        <input type="password" class="form-input" name="password" placeholder="请输入密码" required>
+                        <button type="button" class="btn btn-icon toggle-password">
+                            <i class="icon">👁️</i>
+                        </button>
+                    </div>
+                    <div class="form-help">密码至少包含8个字符，包括字母和数字</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">确认密码</label>
+                    <div class="password-input">
+                        <input type="password" class="form-input" name="confirmPassword" placeholder="请再次输入密码" required>
+                        <button type="button" class="btn btn-icon toggle-password">
+                            <i class="icon">👁️</i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox">
+                        <input type="checkbox" name="agreement" required>
+                        <span>我已阅读并同意<a href="/terms" class="link">服务条款</a>和<a href="/privacy" class="link">隐私政策</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">注册</button>
+
+                <div class="divider">
+                    <span>或</span>
+                </div>
+
+                <button type="button" class="btn btn-outline btn-block social-login">
+                    <img src="../../assets/icons/google.svg" alt="Google">
+                    使用 Google 账号注册
+                </button>
+
+                <div class="auth-footer">
+                    <span>已有账号？</span>
+                    <a href="/auth/login" class="link">立即登录</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../scripts/auth.js"></script>
+</body>
+</html> 

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>周期详情 - 12周目标追踪</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <link rel="stylesheet" href="../../styles/periods.css">
+    <link rel="stylesheet" href="../../vendor/charts/chart.min.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="header">
+        <div class="header-left">
+            <a href="../../index.html" class="logo">12周目标追踪器</a>
+            <nav class="nav">
+                <a href="../../index.html" class="nav-item">仪表盘</a>
+                <a href="../goals/list.html" class="nav-item">目标管理</a>
+                <a href="../tasks/list.html" class="nav-item">任务管理</a>
+                <a href="../analytics/index.html" class="nav-item">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="search">
+                <i class="icon-search"></i>
+            </div>
+            <div class="notification">
+                <i class="icon-bell"></i>
+            </div>
+            <div class="user">
+                <img src="../../assets/images/avatar.jpg" alt="用户头像" class="avatar">
+            </div>
+        </div>
+    </div>
+
+    <main class="main">
+        <!-- 面包屑导航 -->
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="../../index.html">首页</a></li>
+                <li><a href="./list.html">周期管理</a></li>
+                <li class="active">2024 Q1</li>
+            </ol>
+        </nav>
+
+        <div class="period-detail">
+            <!-- 周期头部信息 -->
+            <div class="period-detail-header">
+                <div class="header-main">
+                    <div class="title-section">
+                        <h1>2024 Q1</h1>
+                        <div class="period-meta">
+                            <span class="status-badge active">进行中</span>
+                            <span class="period-progress">第3周 / 共12周</span>
+                        </div>
+                        <div class="period-dates">
+                            <span class="date-item">
+                                <i class="icon-calendar"></i>
+                                开始：2024-01-01
+                            </span>
+                            <span class="date-item">
+                                <i class="icon-calendar-end"></i>
+                                结束：2024-03-24
+                            </span>
+                        </div>
+                        <div class="period-description">
+                            <p>这是2024年第一个12周期，主要聚焦于产品开发和团队建设两大目标。</p>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary">
+                            <i class="icon-edit"></i>
+                            编辑周期
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="icon-plus"></i>
+                            添加目标
+                        </button>
+                        <button class="btn btn-text" data-tooltip="归档后将不能修改">
+                            <i class="icon-archive"></i>
+                            归档
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 进度条 -->
+                <div class="progress-section">
+                    <div class="progress-bar-lg">
+                        <div class="progress" style="width: 30%"></div>
+                        <div class="progress-marker" style="left: 30%" data-tooltip="当前进度：30%"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="progress-text">总体进度</span>
+                        <span class="progress-percentage">30%</span>
+                    </div>
+                </div>
+
+                <!-- 统计概览 -->
+                <div class="stats-overview">
+                    <div class="stat-card">
+                        <div class="stat-value">6</div>
+                        <div class="stat-label">总目标数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">已完成</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">进行中</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">33%</div>
+                        <div class="stat-label">完成率</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 目标概览 -->
+            <section class="goals-overview">
+                <div class="section-header">
+                    <h2>目标概览</h2>
+                    <div class="section-actions">
+                        <button class="btn-icon" data-tooltip="展开全部">
+                            <i class="icon-expand-all"></i>
+                        </button>
+                        <button class="btn-icon" data-tooltip="导出数据">
+                            <i class="icon-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="goals-grid">
+                    <!-- 进行中目标 -->
+                    <div class="goals-column">
+                        <h3>进行中目标 (4)</h3>
+                        <ul class="goals-list">
+                            <li class="goal-item expandable">
+                                <div class="goal-header">
+                                    <span class="goal-progress">30%</span>
+                                    <span class="goal-name">产品开发</span>
+                                    <div class="goal-actions">
+                                        <button class="btn-icon-sm" data-tooltip="编辑">
+                                            <i class="icon-edit"></i>
+                                        </button>
+                                        <button class="btn-icon-sm" data-tooltip="详情">
+                                            <i class="icon-info"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="goal-details">
+                                    <div class="goal-metrics">
+                                        <div class="metric">
+                                            <span class="label">任务</span>
+                                            <span class="value">6/20</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="label">时间</span>
+                                            <span class="value">15天</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- 其他目标项保持相同结构 -->
+                        </ul>
+                    </div>
+                    <!-- 已完成目标 -->
+                    <div class="goals-column">
+                        <h3>已完成目标 (2)</h3>
+                        <ul class="goals-list">
+                            <li class="goal-item completed expandable">
+                                <div class="goal-header">
+                                    <span class="goal-progress">100%</span>
+                                    <span class="goal-name">市场调研</span>
+                                    <div class="goal-actions">
+                                        <button class="btn-icon-sm" data-tooltip="查看总结">
+                                            <i class="icon-summary"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- 其他完成目标项 -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 数据分析 -->
+            <section class="charts-section">
+                <!-- 每周目标完成情况 -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>每周目标完成情况</h3>
+                        <div class="chart-actions">
+                            <div class="chart-period">
+                                <button class="btn-text active">全部</button>
+                                <button class="btn-text">近4周</button>
+                                <button class="btn-text">自定义</button>
+                            </div>
+                            <div class="chart-tools">
+                                <button class="btn-icon" data-tooltip="切换图表类型">
+                                    <i class="icon-chart-type"></i>
+                                </button>
+                                <button class="btn-icon" data-tooltip="导出数据">
+                                    <i class="icon-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart">
+                        <canvas id="weeklyProgress"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: var(--primary-500)"></span>
+                            <span>完成目标</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: var(--neutral-300)"></span>
+                            <span>进行中目标</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 时间投入分析 -->
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>时间投入分析</h3>
+                        <div class="chart-actions">
+                            <div class="chart-view">
+                                <button class="btn-text active">饼图</button>
+                                <button class="btn-text">柱状图</button>
+                            </div>
+                            <div class="chart-tools">
+                                <button class="btn-icon" data-tooltip="数据下钻">
+                                    <i class="icon-drill-down"></i>
+                                </button>
+                                <button class="btn-icon" data-tooltip="导出数据">
+                                    <i class="icon-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart">
+                        <canvas id="timeDistribution"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: var(--primary-500)"></span>
+                            <span>工作</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: var(--success-500)"></span>
+                            <span>学习</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: var(--warning-500)"></span>
+                            <span>生活</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../../vendor/charts/chart.min.js"></script>
+    <script src="../../scripts/periods.js"></script>
+    <script src="../../scripts/charts.js"></script>
+</body>
+</html> 

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目标创建弹窗</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/modal.css">
+</head>
+<body>
+    <!-- 创建目标弹窗 -->
+    <div class="modal" id="createGoalModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新目标</h3>
+                <button class="btn btn-icon" id="closeGoalModalBtn">
+                    <i class="icon">✕</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="goalForm" class="form">
+                    <div class="form-group">
+                        <label class="form-label required">目标名称</label>
+                        <input type="text" class="form-input" name="goalName" placeholder="输入目标名称" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">目标类型</label>
+                        <div class="radio-group">
+                            <label class="radio">
+                                <input type="radio" name="goalType" value="daily" checked>
+                                <span>每日目标</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="goalType" value="weekly">
+                                <span>每周目标</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="goalType" value="period">
+                                <span>周期目标</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required">优先级</label>
+                        <div class="radio-group">
+                            <label class="radio">
+                                <input type="radio" name="priority" value="high">
+                                <span>高</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="priority" value="medium" checked>
+                                <span>中</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="priority" value="low">
+                                <span>低</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">目标描述</label>
+                        <textarea class="form-input" name="description" rows="3" placeholder="描述你的目标详情"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">提醒设置</label>
+                        <div class="reminder-settings">
+                            <div class="switch-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="enableReminder">
+                                    <span class="switch-slider"></span>
+                                </label>
+                                <span class="switch-label">开启提醒</span>
+                            </div>
+                            <select class="form-select" name="reminderTime" disabled>
+                                <option value="daily">每天提醒</option>
+                                <option value="weekly">每周提醒</option>
+                                <option value="custom">自定义</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-text" id="cancelGoalBtn">取消</button>
+                <button class="btn btn-primary" id="createGoalBtn">创建目标</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/goal-modal.js"></script>
+</body>
+</html> 

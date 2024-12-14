@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12周目标追踪器 - 目标管理</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="goals.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">12周目标追踪器</div>
+            <nav class="nav">
+                <a href="dashboard.html" class="nav-item">仪表盘</a>
+                <a href="#" class="nav-item active">目标管理</a>
+                <a href="#" class="nav-item">任务管理</a>
+                <a href="#" class="nav-item">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-text">
+                <i class="icon">🔍</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">🔔</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">⚙️</i>
+            </button>
+            <div class="avatar">
+                <img src="avatar.png" alt="用户头像">
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main">
+        <!-- 页面标题和操作区 -->
+        <div class="page-header">
+            <div class="page-title">
+                <h1>目标管理</h1>
+                <p>共 8 个目标，其中 5 个进行中</p>
+            </div>
+            <button class="btn btn-primary">
+                <i class="icon">➕</i>
+                创建新目标
+            </button>
+        </div>
+
+        <!-- 筛选和排序区 -->
+        <div class="filter-section">
+            <div class="filter-group">
+                <div class="filter-item active">全部目标</div>
+                <div class="filter-item">进行中</div>
+                <div class="filter-item">已完成</div>
+                <div class="filter-item">已暂停</div>
+            </div>
+            <div class="filter-actions">
+                <select class="select">
+                    <option>按创建时间排序</option>
+                    <option>按截止日期排序</option>
+                    <option>按完成度排序</option>
+                </select>
+                <button class="btn btn-text">
+                    <i class="icon">📊</i>
+                    切换视图
+                </button>
+            </div>
+        </div>
+
+        <!-- 目标列表 -->
+        <div class="goals-grid">
+            <!-- 目标卡片 1 -->
+            <div class="card goal-card">
+                <div class="card-body">
+                    <div class="goal-header">
+                        <span class="tag tag-success">进行中</span>
+                        <div class="goal-actions">
+                            <button class="btn btn-text">
+                                <i class="icon">⋮</i>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="goal-title">每天学习编程2小时</h3>
+                    <p class="goal-description">通过每天固定学习时间，提升编程技能，完成个人项目开发</p>
+                    <div class="goal-progress">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 75%">75%</div>
+                        </div>
+                        <div class="progress-stats">
+                            <span>21/28 天</span>
+                            <span>剩余 14 天</span>
+                        </div>
+                    </div>
+                    <div class="goal-meta">
+                        <div class="goal-period">
+                            <i class="icon">📅</i>
+                            2024/01/01 - 2024/01/28
+                        </div>
+                        <div class="goal-frequency">
+                            <i class="icon">🔄</i>
+                            每天打卡
+                        </div>
+                    </div>
+                    <div class="goal-footer">
+                        <button class="btn btn-secondary">
+                            <i class="icon">📝</i>
+                            更新进度
+                        </button>
+                        <button class="btn btn-text">
+                            <i class="icon">📊</i>
+                            查看详情
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 目标卡片 2 -->
+            <div class="card goal-card">
+                <div class="card-body">
+                    <div class="goal-header">
+                        <span class="tag tag-warning">需要关注</span>
+                        <div class="goal-actions">
+                            <button class="btn btn-text">
+                                <i class="icon">⋮</i>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="goal-title">每周跑步3次</h3>
+                    <p class="goal-description">保持运动习惯，每次跑步不少于30分钟，提升身体素质</p>
+                    <div class="goal-progress">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 40%">40%</div>
+                        </div>
+                        <div class="progress-stats">
+                            <span>6/15 次</span>
+                            <span>剩余 21 天</span>
+                        </div>
+                    </div>
+                    <div class="goal-meta">
+                        <div class="goal-period">
+                            <i class="icon">📅</i>
+                            2024/01/01 - 2024/01/31
+                        </div>
+                        <div class="goal-frequency">
+                            <i class="icon">🔄</i>
+                            每周3次
+                        </div>
+                    </div>
+                    <div class="goal-footer">
+                        <button class="btn btn-secondary">
+                            <i class="icon">📝</i>
+                            更新进度
+                        </button>
+                        <button class="btn btn-text">
+                            <i class="icon">📊</i>
+                            查看详情
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 目标卡片 3 -->
+            <div class="card goal-card">
+                <div class="card-body">
+                    <div class="goal-header">
+                        <span class="tag tag-success">进行中</span>
+                        <div class="goal-actions">
+                            <button class="btn btn-text">
+                                <i class="icon">⋮</i>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="goal-title">阅读6本书</h3>
+                    <p class="goal-description">培养阅读习惯，每月至少阅读2本书，提升知识储备</p>
+                    <div class="goal-progress">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 50%">50%</div>
+                        </div>
+                        <div class="progress-stats">
+                            <span>3/6 本</span>
+                            <span>剩余 42 天</span>
+                        </div>
+                    </div>
+                    <div class="goal-meta">
+                        <div class="goal-period">
+                            <i class="icon">📅</i>
+                            2024/01/01 - 2024/03/31
+                        </div>
+                        <div class="goal-frequency">
+                            <i class="icon">🔄</i>
+                            每月2本
+                        </div>
+                    </div>
+                    <div class="goal-footer">
+                        <button class="btn btn-secondary">
+                            <i class="icon">📝</i>
+                            更新进度
+                        </button>
+                        <button class="btn btn-text">
+                            <i class="icon">📊</i>
+                            查看详情
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

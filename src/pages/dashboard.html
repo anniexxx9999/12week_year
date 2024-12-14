@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12周目标追踪器 - 仪表盘</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">12周目标追踪器</div>
+            <nav class="nav">
+                <a href="#" class="nav-item active">仪表盘</a>
+                <a href="#" class="nav-item">目标管理</a>
+                <a href="#" class="nav-item">任务管理</a>
+                <a href="#" class="nav-item">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-text">
+                <i class="icon">🔍</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">🔔</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">⚙️</i>
+            </button>
+            <div class="avatar">
+                <img src="avatar.png" alt="用户头像">
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main">
+        <!-- 欢迎区域 -->
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h1>你好，小明！</h1>
+                <p>今天是第3周第2天，继续保持！</p>
+            </div>
+            <div class="quick-actions">
+                <button class="btn btn-primary">
+                    <i class="icon">➕</i>
+                    添加新目标
+                </button>
+                <button class="btn btn-secondary">
+                    <i class="icon">📝</i>
+                    记录今日进度
+                </button>
+            </div>
+        </section>
+
+        <!-- 进度概览 -->
+        <section class="progress-overview">
+            <div class="card">
+                <div class="card-header">
+                    <h2>总体进度</h2>
+                </div>
+                <div class="card-body">
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 45%">45%</div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="label">已完成目标</span>
+                            <span class="value">3/8</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="label">剩余天数</span>
+                            <span class="value">63天</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="label">完成率</span>
+                            <span class="value">45%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 目标列表 -->
+        <section class="goals-list">
+            <div class="section-header">
+                <h2>进行中的目标</h2>
+                <button class="btn btn-text">查看全部</button>
+            </div>
+            <div class="cards-grid">
+                <!-- 目标卡片 1 -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="goal-header">
+                            <span class="tag tag-success">进行中</span>
+                            <span class="goal-date">剩余 14 天</span>
+                        </div>
+                        <h3 class="goal-title">每天学习编程2小时</h3>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 75%">75%</div>
+                        </div>
+                        <div class="goal-footer">
+                            <span class="completion-rate">21/28 天</span>
+                            <button class="btn btn-text">
+                                <i class="icon">📝</i>
+                                更新进度
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 目标卡片 2 -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="goal-header">
+                            <span class="tag tag-warning">需要关注</span>
+                            <span class="goal-date">剩余 21 天</span>
+                        </div>
+                        <h3 class="goal-title">每周跑步3次</h3>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 40%">40%</div>
+                        </div>
+                        <div class="goal-footer">
+                            <span class="completion-rate">6/15 次</span>
+                            <button class="btn btn-text">
+                                <i class="icon">📝</i>
+                                更新进度
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 今日任务 -->
+        <section class="today-tasks">
+            <div class="section-header">
+                <h2>今日任务</h2>
+                <button class="btn btn-text">添加任务</button>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="task-list">
+                        <li class="task-item completed">
+                            <input type="checkbox" checked>
+                            <span class="task-text">完成早晨跑步</span>
+                            <span class="task-time">09:00</span>
+                        </li>
+                        <li class="task-item">
+                            <input type="checkbox">
+                            <span class="task-text">学习编程2小时</span>
+                            <span class="task-time">14:00</span>
+                        </li>
+                        <li class="task-item">
+                            <input type="checkbox">
+                            <span class="task-text">阅读30分钟</span>
+                            <span class="task-time">20:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

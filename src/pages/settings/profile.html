@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料设置 - 12周目标追踪器</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <link rel="stylesheet" href="../../styles/settings.css">
+</head>
+<body>
+    <div class="settings-container">
+        <!-- 设置侧边栏 -->
+        <aside class="settings-sidebar">
+            <h2>设置</h2>
+            <nav class="settings-nav">
+                <a href="/settings/profile" class="nav-item active">
+                    <i class="icon">👤</i>
+                    个人资料
+                </a>
+                <a href="/settings/account" class="nav-item">
+                    <i class="icon">🔒</i>
+                    账号安全
+                </a>
+                <a href="/settings/notification" class="nav-item">
+                    <i class="icon">🔔</i>
+                    通知设置
+                </a>
+                <a href="/settings/privacy" class="nav-item">
+                    <i class="icon">🛡️</i>
+                    隐私设置
+                </a>
+                <a href="/settings/data" class="nav-item">
+                    <i class="icon">💾</i>
+                    数据管理
+                </a>
+            </nav>
+        </aside>
+
+        <!-- 设置主内容 -->
+        <main class="settings-content">
+            <div class="settings-header">
+                <h1>个人资料</h1>
+                <p class="subtitle">管理你的个人信息</p>
+            </div>
+
+            <form class="settings-form" id="profileForm">
+                <!-- 头像设置 -->
+                <div class="form-section">
+                    <h3>头像</h3>
+                    <div class="avatar-upload">
+                        <div class="avatar-preview">
+                            <img src="../../assets/images/default-avatar.png" alt="用户头像" id="avatarPreview">
+                        </div>
+                        <div class="avatar-actions">
+                            <button type="button" class="btn btn-outline" id="uploadAvatarBtn">
+                                <i class="icon">📷</i>
+                                更换头像
+                            </button>
+                            <button type="button" class="btn btn-text" id="removeAvatarBtn">
+                                删除头像
+                            </button>
+                            <input type="file" id="avatarInput" accept="image/*" hidden>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 基本信息 -->
+                <div class="form-section">
+                    <h3>基本信息</h3>
+                    <div class="form-group">
+                        <label class="form-label required">用户名</label>
+                        <input type="text" class="form-input" name="username" value="示例用户" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">昵称</label>
+                        <input type="text" class="form-input" name="nickname" placeholder="设置你的昵称">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required">邮箱</label>
+                        <input type="email" class="form-input" name="email" value="example@email.com" required>
+                        <div class="form-help">用于接收重要通知</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">个人简介</label>
+                        <textarea class="form-input" name="bio" rows="3" placeholder="介绍一下你自己"></textarea>
+                    </div>
+                </div>
+
+                <!-- 偏好设置 -->
+                <div class="form-section">
+                    <h3>偏好设置</h3>
+                    <div class="form-group">
+                        <label class="form-label">语言</label>
+                        <select class="form-select" name="language">
+                            <option value="zh-CN">简体中文</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">时区</label>
+                        <select class="form-select" name="timezone">
+                            <option value="Asia/Shanghai">中国标准时间 (UTC+8)</option>
+                            <option value="UTC">协调世界时 (UTC)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox">
+                            <input type="checkbox" name="publicProfile">
+                            <span>公开我的个人资料</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 表单操作 -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-text" id="resetBtn">重置</button>
+                    <button type="submit" class="btn btn-primary">保存更改</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="../../scripts/settings.js"></script>
+</body>
+</html> 

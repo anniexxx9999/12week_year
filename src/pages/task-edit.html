@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12周目标追踪器 - 编辑任务</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="task-edit.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">12周目标追踪器</div>
+            <nav class="nav">
+                <a href="#" class="nav-item">仪表盘</a>
+                <a href="#" class="nav-item">目标管理</a>
+                <a href="#" class="nav-item active">任务管理</a>
+                <a href="#" class="nav-item">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-text">
+                <i class="icon">🔍</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">🔔</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">⚙️</i>
+            </button>
+            <div class="avatar">
+                <img src="avatar.png" alt="用户头像">
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main">
+        <!-- 页面标题 -->
+        <div class="page-header">
+            <div class="header-content">
+                <h1>编辑任务</h1>
+                <p class="subtitle">完善任务详情，助你更好地达成目标</p>
+            </div>
+            <div class="header-actions">
+                <button type="button" class="btn btn-text" id="previewBtn">
+                    <i class="icon">👁️</i>
+                    预览
+                </button>
+                <button type="button" class="btn btn-secondary" id="saveAsDraftBtn">
+                    保存草稿
+                </button>
+                <button type="button" class="btn btn-primary" id="saveTaskBtn">
+                    保存任务
+                </button>
+            </div>
+        </div>
+
+        <!-- 任务编辑表单 -->
+        <form class="task-form" id="taskForm">
+            <div class="form-layout">
+                <!-- 主要内容区 -->
+                <div class="form-main">
+                    <!-- 基本信息卡片 -->
+                    <div class="form-card">
+                        <div class="card-header">
+                            <h2>基本信息</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label required">任务名称</label>
+                                <div class="input-wrapper">
+                                    <input 
+                                        type="text" 
+                                        class="form-input" 
+                                        name="taskName"
+                                        placeholder="输入任务名称" 
+                                        required
+                                        minlength="2"
+                                        maxlength="50"
+                                    >
+                                    <div class="input-status">
+                                        <i class="icon success">✓</i>
+                                        <i class="icon error">✕</i>
+                                    </div>
+                                </div>
+                                <div class="form-error">请输入2-50个字符的任务名称</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">任务描述</label>
+                                <div class="rich-editor">
+                                    <div class="editor-toolbar">
+                                        <button type="button" class="btn btn-icon" data-format="bold">
+                                            <i class="icon">B</i>
+                                        </button>
+                                        <button type="button" class="btn btn-icon" data-format="italic">
+                                            <i class="icon">I</i>
+                                        </button>
+                                        <button type="button" class="btn btn-icon" data-format="underline">
+                                            <i class="icon">U</i>
+                                        </button>
+                                        <div class="toolbar-divider"></div>
+                                        <button type="button" class="btn btn-icon" data-format="bullet">
+                                            <i class="icon">•</i>
+                                        </button>
+                                        <button type="button" class="btn btn-icon" data-format="number">
+                                            <i class="icon">1.</i>
+                                        </button>
+                                        <div class="toolbar-divider"></div>
+                                        <button type="button" class="btn btn-icon" data-format="link">
+                                            <i class="icon">🔗</i>
+                                        </button>
+                                    </div>
+                                    <div class="editor-content" contenteditable="true"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 任务类型卡片 -->
+                    <div class="form-card">
+                        <div class="card-header">
+                            <h2>任务类型</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="task-type-selector">
+                                <label class="type-card">
+                                    <input type="radio" name="taskType" value="normal" checked>
+                                    <div class="card-content">
+                                        <div class="card-header">
+                                            <i class="icon">📝</i>
+                                            <span class="title">普通任务</span>
+                                        </div>
+                                        <p class="desc">一次性完成的任务，适合单独项目或特定目标</p>
+                                    </div>
+                                </label>
+
+                                <label class="type-card">
+                                    <input type="radio" name="taskType" value="recurring">
+                                    <div class="card-content">
+                                        <div class="card-header">
+                                            <i class="icon">🔄</i>
+                                            <span class="title">重复任务</span>
+                                        </div>
+                                        <p class="desc">需要定期重复的任务，适合培养习惯或周期性工作</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- 重复任务设置 -->
+                            <div class="recurring-settings" style="display: none;">
+                                <div class="form-group">
+                                    <label class="form-label required">重复频率</label>
+                                    <div class="frequency-selector">
+                                        <select class="form-select" name="frequency">
+                                            <option value="daily">每天</option>
+                                            <option value="weekly">每周</option>
+                                            <option value="monthly">每月</option>
+                                        </select>
+                                        <div class="weekday-selector" style="display: none;">
+                                            <label class="weekday-item">
+                                                <input type="checkbox" name="weekday" value="1">
+                                                <span>一</span>
+                                            </label>
+                                            <label class="weekday-item">
+                                                <input type="checkbox" name="weekday" value="2">
+                                                <span>二</span>
+                                            </label>
+                                            <label class="weekday-item">
+                                                <input type="checkbox" name="weekday" value="3">
+                                                <span>三</span>
+                                            </label>
+                                            <label class="weekday-item">
+                                                <input type="checkbox" name="weekday" value="4">
+                                                <span>四</span>
+                                            </label>
+                                            <label class="weekday-item">
+                                                <input type="checkbox" name="weekday" value="5">
+                                                <span>五</span>
+                                            </label>
+                                            <label class="weekday-item">
+                                                <input type="checkbox" name="weekday" value="6">
+                                                <span>六</span>
+                                            </label>
+                                            <label class="weekday-item">
+                                                <input type="checkbox" name="weekday" value="0">
+                                                <span>日</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 子任务卡片 -->
+                    <div class="form-card">
+                        <div class="card-header">
+                            <h2>子任务</h2>
+                            <button type="button" class="btn btn-text btn-sm" id="addSubtaskBtn">
+                                <i class="icon">➕</i>
+                                添加子任务
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="subtask-list" id="subtaskList">
+                                <!-- 子任务项模板 -->
+                                <div class="subtask-item">
+                                    <div class="drag-handle">⋮⋮</div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="subtask1">
+                                        <label for="subtask1"></label>
+                                    </div>
+                                    <input type="text" class="form-input" placeholder="输��子任务内容">
+                                    <button type="button" class="btn btn-icon remove-subtask">
+                                        <i class="icon">✕</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 附件卡片 -->
+                    <div class="form-card">
+                        <div class="card-header">
+                            <h2>附件</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="file-uploader">
+                                <div class="upload-area" id="uploadArea">
+                                    <input type="file" multiple hidden id="fileInput">
+                                    <div class="upload-content">
+                                        <i class="icon">📤</i>
+                                        <p>拖放文件到这里，或 <button type="button" class="btn btn-text">点击上传</button></p>
+                                        <p class="upload-tip">支持常见文档、图片等格式，单个文件不超过10MB</p>
+                                    </div>
+                                </div>
+                                <div class="file-list" id="fileList">
+                                    <!-- 文件项模板 -->
+                                    <div class="file-item">
+                                        <div class="file-icon">📄</div>
+                                        <div class="file-info">
+                                            <div class="file-name">项目需求文档.docx</div>
+                                            <div class="file-meta">
+                                                <span class="file-size">2.5MB</span>
+                                                <span class="file-date">2024-01-20</span>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-icon remove-file">
+                                            <i class="icon">✕</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 侧边栏 -->
+                <aside class="form-sidebar">
+                    <!-- 任务状态卡片 -->
+                    <div class="form-card">
+                        <div class="card-header">
+                            <h2>任务状态</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">状态</label>
+                                <select class="form-select" name="status">
+                                    <option value="todo">待办</option>
+                                    <option value="in_progress">进行中</option>
+                                    <option value="completed">已完成</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">优先级</label>
+                                <div class="priority-selector">
+                                    <label class="priority-item">
+                                        <input type="radio" name="priority" value="high">
+                                        <span class="priority-content high">
+                                            <i class="icon">🔴</i>
+                                            高优先级
+                                        </span>
+                                    </label>
+                                    <label class="priority-item">
+                                        <input type="radio" name="priority" value="medium" checked>
+                                        <span class="priority-content medium">
+                                            <i class="icon">🟡</i>
+                                            中优先级
+                                        </span>
+                                    </label>
+                                    <label class="priority-item">
+                                        <input type="radio" name="priority" value="low">
+                                        <span class="priority-content low">
+                                            <i class="icon">🟢</i>
+                                            低优先级
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 时间设置卡片 -->
+                    <div class="form-card">
+                        <div class="card-header">
+                            <h2>时间设置</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">开始时间</label>
+                                <input type="datetime-local" class="form-input" name="startTime">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">截止时间</label>
+                                <input type="datetime-local" class="form-input" name="dueTime">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">提醒</label>
+                                <div class="reminder-settings">
+                                    <div class="switch-group">
+                                        <label class="switch">
+                                            <input type="checkbox" name="enableReminder">
+                                            <span class="switch-slider"></span>
+                                        </label>
+                                        <span class="switch-label">开启提醒</span>
+                                    </div>
+                                    <select class="form-select" name="reminderTime" disabled>
+                                        <option value="0">准时提醒</option>
+                                        <option value="5">提前5分钟</option>
+                                        <option value="15">提前15分钟</option>
+                                        <option value="30">提前30分钟</option>
+                                        <option value="60">提前1小时</option>
+                                        <option value="1440">提前1天</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 关联目标卡片 -->
+                    <div class="form-card">
+                        <div class="card-header">
+                            <h2>关联目标</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="goal-selector">
+                                    <select class="form-select" name="linkedGoal">
+                                        <option value="">选择关联目标</option>
+                                        <option value="1">每天学习编程2小时</option>
+                                        <option value="2">每周跑步3次</option>
+                                        <option value="3">读完5本技术书籍</option>
+                                    </select>
+                                    <div class="selected-goal" style="display: none;">
+                                        <div class="goal-info">
+                                            <span class="goal-name">每天学习编程2小时</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 60%"></div>
+                                            </div>
+                                            <span class="progress-text">已完成 60%</span>
+                                        </div>
+                                        <button type="button" class="btn btn-icon remove-goal">
+                                            <i class="icon">✕</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 标签卡片 -->
+                    <div class="form-card">
+                        <div class="card-header">
+                            <h2>标签</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="tag-selector">
+                                    <div class="selected-tags">
+                                        <span class="tag" style="background-color: #E3F2FD; color: #1976D2">
+                                            学习
+                                            <button class="remove-tag">✕</button>
+                                        </span>
+                                        <span class="tag" style="background-color: #E8F5E9; color: #388E3C">
+                                            编程
+                                            <button class="remove-tag">✕</button>
+                                        </span>
+                                    </div>
+                                    <div class="tag-input-wrapper">
+                                        <input type="text" class="tag-input" placeholder="添加标签">
+                                        <div class="tag-suggestions" style="display: none;">
+                                            <div class="suggestion-item">
+                                                <span class="tag-color" style="background-color: #4CAF50"></span>
+                                                <span class="tag-name">学习</span>
+                                            </div>
+                                            <div class="suggestion-item">
+                                                <span class="tag-color" style="background-color: #2196F3"></span>
+                                                <span class="tag-name">运动</span>
+                                            </div>
+                                            <div class="suggestion-item">
+                                                <span class="tag-color" style="background-color: #FF9800"></span>
+                                                <span class="tag-name">阅读</span>
+                                            </div>
+                                            <div class="suggestion-divider"></div>
+                                            <div class="suggestion-item create">
+                                                <i class="icon">➕</i>
+                                                <span>创建新标签</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </form>
+    </main>
+
+    <!-- 预览弹窗 -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>任务预览</h3>
+                <button class="btn btn-icon" id="closePreviewBtn">
+                    <i class="icon">✕</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="preview-card">
+                    <!-- 预览内容将通过JavaScript动态生成 -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-text" id="closePreviewBtn2">关闭</button>
+                <button class="btn btn-primary" id="confirmSaveBtn">确认保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 创建标签弹窗 -->
+    <div class="modal" id="createTagModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新标签</h3>
+                <button class="btn btn-icon" id="closeTagModalBtn">
+                    <i class="icon">✕</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="tagForm">
+                    <div class="form-group">
+                        <label class="form-label required">标签名称</label>
+                        <input type="text" class="form-input" name="tagName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label required">标签颜色</label>
+                        <div class="color-picker">
+                            <div class="color-options">
+                                <label class="color-option">
+                                    <input type="radio" name="tagColor" value="#E3F2FD">
+                                    <span class="color-preview" style="background-color: #E3F2FD"></span>
+                                </label>
+                                <label class="color-option">
+                                    <input type="radio" name="tagColor" value="#E8F5E9">
+                                    <span class="color-preview" style="background-color: #E8F5E9"></span>
+                                </label>
+                                <label class="color-option">
+                                    <input type="radio" name="tagColor" value="#FFF3E0">
+                                    <span class="color-preview" style="background-color: #FFF3E0"></span>
+                                </label>
+                                <label class="color-option">
+                                    <input type="radio" name="tagColor" value="#F3E5F5">
+                                    <span class="color-preview" style="background-color: #F3E5F5"></span>
+                                </label>
+                                <label class="color-option">
+                                    <input type="radio" name="tagColor" value="#E1F5FE">
+                                    <span class="color-preview" style="background-color: #E1F5FE"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-text" id="cancelTagBtn">取消</button>
+                <button class="btn btn-primary" id="createTagBtn">创建</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="task-edit.js"></script>
+</html> 

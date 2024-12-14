@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>任务创建弹窗</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/modal.css">
+</head>
+<body>
+    <!-- 创建任务弹窗 -->
+    <div class="modal" id="createTaskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新任务</h3>
+                <button class="btn btn-icon" id="closeTaskModalBtn">
+                    <i class="icon">✕</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="taskForm" class="form">
+                    <div class="form-group">
+                        <label class="form-label required">任务名称</label>
+                        <input type="text" class="form-input" name="taskName" placeholder="输入任务名称" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">关联目标</label>
+                        <select class="form-select" name="linkedGoal">
+                            <option value="">选择关联目标</option>
+                            <option value="1">目标1</option>
+                            <option value="2">目标2</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required">优先级</label>
+                        <div class="radio-group">
+                            <label class="radio">
+                                <input type="radio" name="priority" value="high">
+                                <span>高</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="priority" value="medium" checked>
+                                <span>中</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="priority" value="low">
+                                <span>低</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required">截止时间</label>
+                        <div class="datetime-group">
+                            <input type="date" class="form-input" name="dueDate" required>
+                            <input type="time" class="form-input" name="dueTime" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">任务描述</label>
+                        <textarea class="form-input" name="description" rows="3" placeholder="描述任务详情"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">标签</label>
+                        <div class="tag-input">
+                            <div class="tag-list"></div>
+                            <input type="text" class="form-input" placeholder="输入标签名称，回车添加">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">提醒设置</label>
+                        <div class="reminder-settings">
+                            <div class="checkbox-group">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="reminder30min">
+                                    <span>截止前30分钟</span>
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="reminder1day">
+                                    <span>截止前1天</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-text" id="cancelTaskBtn">取消</button>
+                <button class="btn btn-primary" id="createTaskBtn">创建任务</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/task-modal.js"></script>
+</body>
+</html> 

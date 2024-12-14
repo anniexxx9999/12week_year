@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12周目标追踪器 - 目标管理</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="goal-list.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">12周目标追踪器</div>
+            <nav class="nav">
+                <a href="#" class="nav-item">仪表盘</a>
+                <a href="#" class="nav-item active">目标管理</a>
+                <a href="#" class="nav-item">任务管理</a>
+                <a href="#" class="nav-item">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-text">
+                <i class="icon">🔍</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">🔔</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">⚙️</i>
+            </button>
+            <div class="avatar">
+                <img src="avatar.png" alt="用户头像">
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main">
+        <!-- 页面标题和操作 -->
+        <div class="page-header">
+            <div class="header-content">
+                <h1>目标管理</h1>
+                <p class="subtitle">管理和追踪你的所有12周目标</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary">
+                    <i class="icon">➕</i>
+                    创建新目标
+                </button>
+            </div>
+        </div>
+
+        <!-- 筛选和搜索 -->
+        <div class="filter-bar">
+            <div class="filter-tabs">
+                <button class="tab-item active">
+                    <span class="tab-text">全部</span>
+                    <span class="tab-count">12</span>
+                </button>
+                <button class="tab-item">
+                    <span class="tab-text">进行中</span>
+                    <span class="tab-count">8</span>
+                </button>
+                <button class="tab-item">
+                    <span class="tab-text">已完成</span>
+                    <span class="tab-count">3</span>
+                </button>
+                <button class="tab-item">
+                    <span class="tab-text">已归档</span>
+                    <span class="tab-count">1</span>
+                </button>
+            </div>
+            <div class="filter-actions">
+                <div class="search-box">
+                    <i class="icon">🔍</i>
+                    <input type="text" placeholder="搜索目标">
+                </div>
+                <div class="view-switch">
+                    <button class="btn btn-text active">
+                        <i class="icon">📊</i>
+                    </button>
+                    <button class="btn btn-text">
+                        <i class="icon">📋</i>
+                    </button>
+                </div>
+                <div class="sort-dropdown">
+                    <button class="btn btn-text">
+                        最近更新
+                        <i class="icon">▼</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 批量操作工具栏 -->
+        <div class="bulk-actions">
+            <label class="checkbox-item">
+                <input type="checkbox">
+                <span class="checkbox-text">全选</span>
+            </label>
+            <div class="action-buttons">
+                <button class="btn btn-text" disabled>
+                    <i class="icon">📋</i>
+                    复制
+                </button>
+                <button class="btn btn-text" disabled>
+                    <i class="icon">📦</i>
+                    归档
+                </button>
+                <button class="btn btn-text" disabled>
+                    <i class="icon">🗑️</i>
+                    删除
+                </button>
+            </div>
+            <span class="selection-info">已选择 0 项</span>
+        </div>
+
+        <!-- 目标列表 -->
+        <div class="goals-grid">
+            <!-- 目标卡片 1 -->
+            <div class="card goal-card">
+                <div class="card-body">
+                    <div class="goal-header">
+                        <label class="checkbox-item">
+                            <input type="checkbox">
+                        </label>
+                        <span class="tag tag-success">进行中</span>
+                        <div class="goal-actions">
+                            <button class="btn btn-text">
+                                <i class="icon">⋮</i>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="goal-title">每天学习编程2小时</h3>
+                    <p class="goal-desc">每天保持2小时的编程学习，包括视频教程学习、实践练习和项目开发。</p>
+                    <div class="goal-progress">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 75%">75%</div>
+                        </div>
+                        <span class="progress-text">已完成 21/28 天</span>
+                    </div>
+                    <div class="goal-meta">
+                        <div class="meta-item">
+                            <i class="icon">📅</i>
+                            <span>剩余 14 天</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="icon">🎯</i>
+                            <span>每日目标</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 目标卡片 2 -->
+            <div class="card goal-card">
+                <div class="card-body">
+                    <div class="goal-header">
+                        <label class="checkbox-item">
+                            <input type="checkbox">
+                        </label>
+                        <span class="tag tag-warning">需要关注</span>
+                        <div class="goal-actions">
+                            <button class="btn btn-text">
+                                <i class="icon">⋮</i>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="goal-title">每周跑步3次</h3>
+                    <p class="goal-desc">保持每周3次跑步习惯，每次至少30分钟，提高身体素质。</p>
+                    <div class="goal-progress">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 40%">40%</div>
+                        </div>
+                        <span class="progress-text">已完成 6/15 次</span>
+                    </div>
+                    <div class="goal-meta">
+                        <div class="meta-item">
+                            <i class="icon">📅</i>
+                            <span>剩余 21 天</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="icon">🎯</i>
+                            <span>每周目标</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 目标卡片 3 -->
+            <div class="card goal-card">
+                <div class="card-body">
+                    <div class="goal-header">
+                        <label class="checkbox-item">
+                            <input type="checkbox">
+                        </label>
+                        <span class="tag tag-info">已完成</span>
+                        <div class="goal-actions">
+                            <button class="btn btn-text">
+                                <i class="icon">⋮</i>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="goal-title">读完5本技术书籍</h3>
+                    <p class="goal-desc">阅读并完成5本前端开发相关的技术书籍，提升专业知识储备。</p>
+                    <div class="goal-progress">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%">100%</div>
+                        </div>
+                        <span class="progress-text">已完成 5/5 本</span>
+                    </div>
+                    <div class="goal-meta">
+                        <div class="meta-item">
+                            <i class="icon">📅</i>
+                            <span>已完成</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="icon">🎯</i>
+                            <span>累计目标</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 目标卡片 4 -->
+            <div class="card goal-card archived">
+                <div class="card-body">
+                    <div class="goal-header">
+                        <label class="checkbox-item">
+                            <input type="checkbox">
+                        </label>
+                        <span class="tag tag-neutral">已归档</span>
+                        <div class="goal-actions">
+                            <button class="btn btn-text">
+                                <i class="icon">⋮</i>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="goal-title">完成个人博客项目</h3>
+                    <p class="goal-desc">使用React和Node.js开发一个个人博客系统，并部署上线。</p>
+                    <div class="goal-progress">
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 85%">85%</div>
+                        </div>
+                        <span class="progress-text">已归档</span>
+                    </div>
+                    <div class="goal-meta">
+                        <div class="meta-item">
+                            <i class="icon">📅</i>
+                            <span>已归档</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="icon">🎯</i>
+                            <span>项目目标</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分页 -->
+        <div class="pagination">
+            <button class="btn btn-text" disabled>
+                <i class="icon">◀</i>
+            </button>
+            <div class="page-numbers">
+                <button class="btn btn-text active">1</button>
+                <button class="btn btn-text">2</button>
+                <button class="btn btn-text">3</button>
+            </div>
+            <button class="btn btn-text">
+                <i class="icon">▶</i>
+            </button>
+        </div>
+    </main>
+</body>
+</html> 

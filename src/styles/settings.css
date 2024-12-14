@@ -1,0 +1,225 @@
+/* 设置页面容器 */
+.settings-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* 设置侧边栏 */
+.settings-sidebar {
+    width: 240px;
+    background-color: white;
+    border-right: 1px solid #e8e8e8;
+    padding: 24px 0;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.settings-sidebar h2 {
+    font-size: 16px;
+    color: #1a1a1a;
+    padding: 0 24px;
+    margin-bottom: 16px;
+}
+
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+}
+
+.nav-item.active {
+    background-color: #e6f7ff;
+    color: #1890ff;
+    border-right: 2px solid #1890ff;
+}
+
+/* 设置主内容 */
+.settings-content {
+    flex: 1;
+    margin-left: 240px;
+    padding: 32px;
+    max-width: 800px;
+}
+
+.settings-header {
+    margin-bottom: 32px;
+}
+
+.settings-header h1 {
+    font-size: 24px;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.settings-header .subtitle {
+    font-size: 14px;
+    color: #666;
+}
+
+/* 表单部分 */
+.settings-form {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-section {
+    padding: 24px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+}
+
+.form-section h3 {
+    font-size: 16px;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
+/* 头像上传 */
+.avatar-upload {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.avatar-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #e8e8e8;
+}
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 表单操作 */
+.form-actions {
+    padding: 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    background-color: #fafafa;
+    border-top: 1px solid #e8e8e8;
+    border-radius: 0 0 8px 8px;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+    .settings-container {
+        flex-direction: column;
+    }
+
+    .settings-sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 16px;
+        border-right: none;
+        border-bottom: 1px solid #e8e8e8;
+    }
+
+    .settings-content {
+        margin-left: 0;
+        padding: 16px;
+    }
+
+    .avatar-upload {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .form-actions {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 0;
+        background-color: white;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    }
+}
+
+/* 表单验证状态 */
+.form-input.error {
+    border-color: #ff4d4f;
+}
+
+.form-input.success {
+    border-color: #52c41a;
+}
+
+/* 加载状态 */
+.form-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.form-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 保存成功提示 */
+.save-success {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    padding: 12px 24px;
+    background-color: #f6ffed;
+    border: 1px solid #b7eb8f;
+    border-radius: 4px;
+    color: #52c41a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: slide-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+} 

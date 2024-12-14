@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>周计划 - 12周目标追踪器</title>
+    <link rel="stylesheet" href="../styles/design-system.css">
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/weekly-plan.css">
+</head>
+<body class="theme-light">
+    <!-- 加载提示 -->
+    <div class="loading-overlay" id="loadingOverlay" hidden>
+        <div class="loading-spinner"></div>
+        <span class="loading-text text-secondary">加载中...</span>
+    </div>
+
+    <!-- 错误提示 -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="page-container">
+        <!-- 页面头部 -->
+        <header class="page-header">
+            <div class="header-content">
+                <h1 class="text-h1 text-primary">周计划</h1>
+                <p class="text-body text-secondary">规划和追踪你的每周目标和任务</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-text btn-with-icon" id="prevWeekBtn">
+                    <i class="icon icon-arrow-left text-secondary">◀</i>
+                    <span>上一周</span>
+                </button>
+                <span class="current-week text-h4 text-primary">2024年第1周 (1.1-1.7)</span>
+                <button class="btn btn-text btn-with-icon" id="nextWeekBtn">
+                    <span>下一周</span>
+                    <i class="icon icon-arrow-right text-secondary">▶</i>
+                </button>
+                <button class="btn btn-primary btn-with-icon" id="createTaskBtn">
+                    <i class="icon icon-plus">➕</i>
+                    <span>新建任务</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- 三栏布局容器 -->
+        <div class="weekly-plan-container">
+            <!-- 左侧：周目标概览 -->
+            <aside class="weekly-goals card">
+                <div class="section-header">
+                    <h2 class="text-h3 text-primary">本周目标</h2>
+                    <button class="btn btn-icon btn-sm" title="目标设置">
+                        <i class="icon icon-settings text-secondary">⚙️</i>
+                    </button>
+                </div>
+                
+                <div class="goals-list">
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <h3 class="text-h4 text-primary">提升产品质量</h3>
+                            <span class="progress text-primary">75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <div class="milestones">
+                            <div class="milestone completed">
+                                <span class="milestone-dot"></span>
+                                <span class="milestone-text text-success">完成需求分析</span>
+                            </div>
+                            <div class="milestone">
+                                <span class="milestone-dot"></span>
+                                <span class="milestone-text text-secondary">用户测试</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <h3 class="text-h4 text-primary">技能提升</h3>
+                            <span class="progress text-primary">30%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                        <div class="milestones">
+                            <div class="milestone">
+                                <span class="milestone-dot"></span>
+                                <span class="milestone-text text-secondary">完成在线课程</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 中间：日历周视图 -->
+            <main class="weekly-calendar card">
+                <div class="calendar-header">
+                    <div class="weekday text-semibold text-secondary">周一</div>
+                    <div class="weekday text-semibold text-secondary">周二</div>
+                    <div class="weekday text-semibold text-secondary">周三</div>
+                    <div class="weekday text-semibold text-secondary">周四</div>
+                    <div class="weekday text-semibold text-secondary">周五</div>
+                    <div class="weekday weekend text-semibold text-error">周六</div>
+                    <div class="weekday weekend text-semibold text-error">周日</div>
+                </div>
+                
+                <div class="calendar-grid">
+                    <div class="calendar-day" data-date="2024-01-01">
+                        <div class="day-header text-small text-secondary">1月1日</div>
+                        <div class="day-content" data-droppable="true">
+                            <div class="task-card" draggable="true" data-task-id="1">
+                                <div class="task-time text-small text-primary">09:00-11:00</div>
+                                <div class="task-title text-body text-primary">产品评审会议</div>
+                                <div class="task-actions">
+                                    <button class="btn btn-icon btn-xs" title="完成任务" onclick="toggleTaskComplete(1)">
+                                        <i class="icon icon-check text-success">✓</i>
+                                    </button>
+                                    <button class="btn btn-icon btn-xs" title="编辑任务" onclick="editTask(1)">
+                                        <i class="icon icon-edit text-secondary">📝</i>
+                                    </button>
+                                    <button class="btn btn-icon btn-xs" title="删除任务" onclick="deleteTask(1)">
+                                        <i class="icon icon-delete text-error">🗑</i>
+                                    </button>
+                                </div>
+                                <div class="task-tags">
+                                    <span class="tag text-primary">会议</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 其他日期单元格 -->
+                    <div class="calendar-day" data-date="2024-01-02">
+                        <div class="day-header text-small">1月2日</div>
+                        <div class="day-content" data-droppable="true"></div>
+                    </div>
+                    <div class="calendar-day" data-date="2024-01-03">
+                        <div class="day-header text-small">1月3日</div>
+                        <div class="day-content" data-droppable="true"></div>
+                    </div>
+                    <div class="calendar-day" data-date="2024-01-04">
+                        <div class="day-header text-small">1月4日</div>
+                        <div class="day-content" data-droppable="true"></div>
+                    </div>
+                    <div class="calendar-day" data-date="2024-01-05">
+                        <div class="day-header text-small">1月5日</div>
+                        <div class="day-content" data-droppable="true"></div>
+                    </div>
+                    <div class="calendar-day weekend" data-date="2024-01-06">
+                        <div class="day-header text-small">1月6日</div>
+                        <div class="day-content" data-droppable="true"></div>
+                    </div>
+                    <div class="calendar-day weekend" data-date="2024-01-07">
+                        <div class="day-header text-small">1月7日</div>
+                        <div class="day-content" data-droppable="true"></div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- 右侧：待办任务列表 -->
+            <aside class="weekly-todos card">
+                <div class="section-header">
+                    <h2 class="text-h3 text-primary">待办任务</h2>
+                    <div class="header-actions">
+                        <button class="btn btn-icon btn-sm" title="搜索任务">
+                            <i class="icon icon-search text-secondary">🔍</i>
+                        </button>
+                        <button class="btn btn-icon btn-sm" title="任务设置">
+                            <i class="icon icon-settings text-secondary">⚙️</i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="todos-list">
+                    <div class="task-card" draggable="true" data-task-id="2">
+                        <div class="task-header">
+                            <span class="task-title text-body text-primary">准备用户访谈</span>
+                            <div class="task-actions">
+                                <button class="btn btn-icon btn-xs" title="完成任务" onclick="toggleTaskComplete(2)">
+                                    <i class="icon icon-check text-success">✓</i>
+                                </button>
+                                <button class="btn btn-icon btn-xs" title="编辑任务" onclick="editTask(2)">
+                                    <i class="icon icon-edit text-secondary">📝</i>
+                                </button>
+                                <button class="btn btn-icon btn-xs" title="删除任务" onclick="deleteTask(2)">
+                                    <i class="icon icon-delete text-error">🗑</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="task-info text-small">
+                            <span class="task-deadline text-error">本周五截止</span>
+                            <span class="task-goal text-primary">提升产品质量</span>
+                        </div>
+                        <div class="task-tags">
+                            <span class="tag text-primary">调研</span>
+                            <span class="tag text-primary">用户</span>
+                        </div>
+                    </div>
+
+                    <div class="task-card" draggable="true" data-task-id="3">
+                        <div class="task-header">
+                            <span class="task-title text-body">完成在线课程第三章</span>
+                            <div class="task-actions">
+                                <button class="btn btn-icon btn-xs" title="完成任务" onclick="toggleTaskComplete(3)">
+                                    <i class="icon icon-check">✓</i>
+                                </button>
+                                <button class="btn btn-icon btn-xs" title="编辑任务" onclick="editTask(3)">
+                                    <i class="icon icon-edit">📝</i>
+                                </button>
+                                <button class="btn btn-icon btn-xs" title="删除任务" onclick="deleteTask(3)">
+                                    <i class="icon icon-delete">🗑</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="task-info text-small">
+                            <span class="task-deadline text-error">本周日截止</span>
+                            <span class="task-goal text-primary">技能提升</span>
+                        </div>
+                        <div class="task-tags">
+                            <span class="tag">学习</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- 任务创建/编辑弹窗 -->
+    <div class="modal" id="taskModal" hidden>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="text-h3">创建任务</h3>
+                <button class="btn btn-icon btn-sm" id="closeTaskModal">
+                    <i class="icon icon-close">✕</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="taskTitle" class="form-label">任务标题</label>
+                        <input type="text" id="taskTitle" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskGoal" class="form-label">所属目标</label>
+                        <select id="taskGoal" class="form-select">
+                            <option value="1">提升产品质量</option>
+                            <option value="2">技能提升</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">优先级</label>
+                        <div class="radio-group">
+                            <label class="radio">
+                                <input type="radio" name="priority" value="high">
+                                <span>高</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="priority" value="medium" checked>
+                                <span>中</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="priority" value="low">
+                                <span>低</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDate" class="form-label">日期</label>
+                        <input type="date" id="taskDate" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskTime" class="form-label">时间</label>
+                        <input type="time" id="taskTime" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="taskTags" class="form-label">标签</label>
+                        <input type="text" id="taskTags" class="form-input" placeholder="用逗号分隔多个标签">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-text" id="cancelTask">取消</button>
+                <button class="btn btn-primary" id="saveTask">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 删除确认弹窗 -->
+    <div class="modal" id="deleteConfirmModal" hidden>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="text-h3">删除任务</h3>
+                <button class="btn btn-icon btn-sm" id="closeDeleteModal">
+                    <i class="icon icon-close">✕</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>确定要删��这个任务吗？此操作无法撤销。</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-text" id="cancelDelete">取消</button>
+                <button class="btn btn-error" id="confirmDelete">删除</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/weekly-plan.js"></script>
+</body>
+</html> 

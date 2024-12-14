@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12周目标追踪器 - 任务管理</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="task-list.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">12周目标追踪器</div>
+            <nav class="nav">
+                <a href="#" class="nav-item">仪表盘</a>
+                <a href="#" class="nav-item">目标管理</a>
+                <a href="#" class="nav-item active">任务管理</a>
+                <a href="#" class="nav-item">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-text">
+                <i class="icon">🔍</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">🔔</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">⚙️</i>
+            </button>
+            <div class="avatar">
+                <img src="avatar.png" alt="用户头像">
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main">
+        <!-- 页面标题 -->
+        <div class="page-header">
+            <div class="header-content">
+                <h1>任务管理</h1>
+                <p class="subtitle">管理和追踪你的所有任务</p>
+            </div>
+            <div class="header-actions">
+                <a href="weekly-plan.html" class="btn btn-secondary">
+                    <i class="icon">📅</i>
+                    查看周计划任务
+                </a>
+                <button class="btn btn-primary" id="createTaskBtn">
+                    <i class="icon">➕</i>
+                    创建任务
+                </button>
+            </div>
+        </div>
+
+        <!-- 任务管理区域 -->
+        <div class="task-management">
+            <!-- 侧边栏 -->
+            <aside class="task-sidebar">
+                <!-- 快速筛选 -->
+                <div class="quick-filters">
+                    <a href="#" class="filter-item active">
+                        <i class="icon">📥</i>
+                        <span class="text">收集箱</span>
+                        <span class="count">12</span>
+                    </a>
+                    <a href="#" class="filter-item">
+                        <i class="icon">📅</i>
+                        <span class="text">今日任务</span>
+                        <span class="count">5</span>
+                    </a>
+                    <a href="#" class="filter-item">
+                        <i class="icon">⭐️</i>
+                        <span class="text">重要任务</span>
+                        <span class="count">3</span>
+                    </a>
+                    <a href="#" class="filter-item">
+                        <i class="icon">✅</i>
+                        <span class="text">已完成</span>
+                        <span class="count">28</span>
+                    </a>
+                </div>
+
+                <!-- 关联目标 -->
+                <div class="linked-goals">
+                    <div class="section-header">
+                        <h3>关联目标</h3>
+                        <button class="btn btn-text btn-sm">
+                            <i class="icon">▼</i>
+                        </button>
+                    </div>
+                    <div class="goal-list">
+                        <a href="#" class="goal-item">
+                            <div class="goal-info">
+                                <span class="goal-name">每天学习编程2小时</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <span class="task-count">8</span>
+                        </a>
+                        <a href="#" class="goal-item">
+                            <div class="goal-info">
+                                <span class="goal-name">每周跑步3次</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            <span class="task-count">3</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 标签管理 -->
+                <div class="task-tags">
+                    <div class="section-header">
+                        <h3>标签</h3>
+                        <button class="btn btn-text btn-sm">
+                            <i class="icon">➕</i>
+                        </button>
+                    </div>
+                    <div class="tag-list">
+                        <a href="#" class="tag-item">
+                            <span class="tag-color" style="background-color: #4CAF50"></span>
+                            <span class="tag-name">学习</span>
+                            <span class="task-count">5</span>
+                        </a>
+                        <a href="#" class="tag-item">
+                            <span class="tag-color" style="background-color: #2196F3"></span>
+                            <span class="tag-name">运动</span>
+                            <span class="task-count">3</span>
+                        </a>
+                        <a href="#" class="tag-item">
+                            <span class="tag-color" style="background-color: #FF9800"></span>
+                            <span class="tag-name">阅读</span>
+                            <span class="task-count">4</span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 任务列表区域 -->
+            <div class="task-content">
+                <!-- 工具栏 -->
+                <div class="toolbar">
+                    <div class="search-box">
+                        <i class="icon">🔍</i>
+                        <input type="text" placeholder="搜索任务">
+                    </div>
+                    <div class="view-controls">
+                        <div class="btn-group">
+                            <button class="btn btn-text active">
+                                <i class="icon">📋</i>
+                                列表
+                            </button>
+                            <button class="btn btn-text">
+                                <i class="icon">📊</i>
+                                看板
+                            </button>
+                        </div>
+                        <div class="sort-dropdown">
+                            <button class="btn btn-text">
+                                排序方式
+                                <i class="icon">▼</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 任务列表 -->
+                <div class="task-list">
+                    <!-- 今日任务组 -->
+                    <div class="task-group">
+                        <div class="group-header">
+                            <h3>今日</h3>
+                            <span class="task-count">3个任务</span>
+                        </div>
+                        <div class="task-items">
+                            <!-- 任务项 1 -->
+                            <div class="task-item">
+                                <div class="task-checkbox">
+                                    <input type="checkbox" id="task1">
+                                    <label for="task1"></label>
+                                </div>
+                                <div class="task-content">
+                                    <div class="task-main">
+                                        <h4 class="task-title">完成React组件开发</h4>
+                                        <p class="task-desc">实现目标追踪器的核心组件，包括进度条、任务卡片���</p>
+                                    </div>
+                                    <div class="task-meta">
+                                        <div class="task-tags">
+                                            <span class="tag" style="background-color: #E3F2FD; color: #1976D2">学习</span>
+                                            <span class="tag" style="background-color: #E8F5E9; color: #388E3C">编程</span>
+                                        </div>
+                                        <div class="task-info">
+                                            <span class="priority high">
+                                                <i class="icon">🔴</i>
+                                                高优先级
+                                            </span>
+                                            <span class="due-time">
+                                                <i class="icon">⏰</i>
+                                                今天 14:00
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="task-actions">
+                                    <button class="btn btn-icon">
+                                        <i class="icon">⭐️</i>
+                                    </button>
+                                    <button class="btn btn-icon">
+                                        <i class="icon">⋮</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 任务项 2 -->
+                            <div class="task-item">
+                                <div class="task-checkbox">
+                                    <input type="checkbox" id="task2">
+                                    <label for="task2"></label>
+                                </div>
+                                <div class="task-content">
+                                    <div class="task-main">
+                                        <h4 class="task-title">晨跑5公里</h4>
+                                        <p class="task-desc">保持每周跑步计划的一部分</p>
+                                    </div>
+                                    <div class="task-meta">
+                                        <div class="task-tags">
+                                            <span class="tag" style="background-color: #FFF3E0; color: #F57C00">运动</span>
+                                        </div>
+                                        <div class="task-info">
+                                            <span class="priority medium">
+                                                <i class="icon">🟡</i>
+                                                中优先级
+                                            </span>
+                                            <span class="due-time">
+                                                <i class="icon">⏰</i>
+                                                今天 07:00
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="task-actions">
+                                    <button class="btn btn-icon">
+                                        <i class="icon">⋮</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 明日任务组 -->
+                    <div class="task-group">
+                        <div class="group-header">
+                            <h3>明日</h3>
+                            <span class="task-count">2个任务</span>
+                        </div>
+                        <div class="task-items">
+                            <!-- 任务项 3 -->
+                            <div class="task-item">
+                                <div class="task-checkbox">
+                                    <input type="checkbox" id="task3">
+                                    <label for="task3"></label>
+                                </div>
+                                <div class="task-content">
+                                    <div class="task-main">
+                                        <h4 class="task-title">阅读技术文档</h4>
+                                        <p class="task-desc">阅读React Router文档，为项目路由开发做准备</p>
+                                    </div>
+                                    <div class="task-meta">
+                                        <div class="task-tags">
+                                            <span class="tag" style="background-color: #E3F2FD; color: #1976D2">学习</span>
+                                            <span class="tag" style="background-color: #F3E5F5; color: #7B1FA2">阅读</span>
+                                        </div>
+                                        <div class="task-info">
+                                            <span class="priority low">
+                                                <i class="icon">🟢</i>
+                                                低优先级
+                                            </span>
+                                            <span class="due-time">
+                                                <i class="icon">⏰</i>
+                                                明天 10:00
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="task-actions">
+                                    <button class="btn btn-icon">
+                                        <i class="icon">⋮</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 本周任务组 -->
+                    <div class="task-group">
+                        <div class="group-header">
+                            <h3>本周</h3>
+                            <span class="task-count">4个任务</span>
+                        </div>
+                        <div class="task-items">
+                            <!-- 任务项 4 -->
+                            <div class="task-item">
+                                <div class="task-checkbox">
+                                    <input type="checkbox" id="task4">
+                                    <label for="task4"></label>
+                                </div>
+                                <div class="task-content">
+                                    <div class="task-main">
+                                        <h4 class="task-title">完成项目文档</h4>
+                                        <p class="task-desc">编写项目开发文档和API文档</p>
+                                    </div>
+                                    <div class="task-meta">
+                                        <div class="task-tags">
+                                            <span class="tag" style="background-color: #E8F5E9; color: #388E3C">文档</span>
+                                        </div>
+                                        <div class="task-info">
+                                            <span class="priority medium">
+                                                <i class="icon">🟡</i>
+                                                中优先级
+                                            </span>
+                                            <span class="due-time">
+                                                <i class="icon">📅</i>
+                                                周五
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="task-actions">
+                                    <button class="btn btn-icon">
+                                        <i class="icon">⋮</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 创建任务弹窗 -->
+    <div class="modal" id="createTaskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创建新任务</h3>
+                <button class="btn btn-icon" id="closeModalBtn">
+                    <i class="icon">✕</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label class="form-label required">任务名称</label>
+                        <input type="text" class="form-input" placeholder="输入任务名称" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">任务描述</label>
+                        <textarea class="form-input" rows="3" placeholder="描述任务详情"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label class="form-label">关联目标</label>
+                            <select class="form-select">
+                                <option value="">选择关联目标</option>
+                                <option value="1">每天学习编程2小时</option>
+                                <option value="2">每周跑步3次</option>
+                            </select>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label class="form-label">优先级</label>
+                            <select class="form-select">
+                                <option value="high">高优先级</option>
+                                <option value="medium" selected>中优先级</option>
+                                <option value="low">低优先级</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label class="form-label">截止日期</label>
+                            <input type="date" class="form-input">
+                        </div>
+                        <div class="form-group flex-1">
+                            <label class="form-label">提醒时间</label>
+                            <input type="time" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">标签</label>
+                        <div class="tag-selector">
+                            <div class="selected-tags">
+                                <span class="tag" style="background-color: #E3F2FD; color: #1976D2">
+                                    学习
+                                    <button class="remove-tag">✕</button>
+                                </span>
+                                <span class="tag" style="background-color: #E8F5E9; color: #388E3C">
+                                    编程
+                                    <button class="remove-tag">✕</button>
+                                </span>
+                            </div>
+                            <input type="text" class="tag-input" placeholder="添加标签">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-text">取消</button>
+                <button class="btn btn-primary">创建任务</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 任务操作菜单 -->
+    <div class="dropdown-menu" id="taskActionMenu">
+        <button class="dropdown-item">
+            <i class="icon">📝</i>
+            <span>编辑任务</span>
+        </button>
+        <button class="dropdown-item">
+            <i class="icon">📋</i>
+            <span>复制任务</span>
+        </button>
+        <button class="dropdown-item">
+            <i class="icon">📅</i>
+            <span>设置日期</span>
+        </button>
+        <button class="dropdown-item">
+            <i class="icon">🏷️</i>
+            <span>添加标签</span>
+        </button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item text-danger">
+            <i class="icon">🗑️</i>
+            <span>删除任务</span>
+        </button>
+    </div>
+</body>
+<script src="task-list.js"></script>
+</html> 

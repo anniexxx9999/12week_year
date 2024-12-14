@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12周目标追踪器 - 创建目标</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="goal-form.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">12周目标追踪器</div>
+            <nav class="nav">
+                <a href="#" class="nav-item">仪表盘</a>
+                <a href="#" class="nav-item active">目标管理</a>
+                <a href="#" class="nav-item">任务管理</a>
+                <a href="#" class="nav-item">数据分析</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-text">
+                <i class="icon">🔍</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">🔔</i>
+            </button>
+            <button class="btn btn-text">
+                <i class="icon">⚙️</i>
+            </button>
+            <div class="avatar">
+                <img src="avatar.png" alt="用户头像">
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main">
+        <!-- 页面标题 -->
+        <div class="page-header">
+            <div class="header-content">
+                <h1>创建新目标</h1>
+                <p class="subtitle">设定一个明确、可衡量的12周目标</p>
+            </div>
+            <div class="header-actions">
+                <button type="button" class="btn btn-text" id="previewBtn">
+                    <i class="icon">👁️</i>
+                    预览
+                </button>
+                <button type="button" class="btn btn-secondary" id="saveAsDraftBtn">
+                    保存草稿
+                </button>
+            </div>
+        </div>
+
+        <!-- 目标表单 -->
+        <form class="goal-form card" id="goalForm" novalidate>
+            <div class="card-body">
+                <!-- 基本信息 -->
+                <section class="form-section">
+                    <h2 class="section-title">基本信息</h2>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">目标名称</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="text" 
+                                class="form-input" 
+                                name="goalName"
+                                placeholder="例如：每天学习编程2小时" 
+                                required
+                                minlength="4"
+                                maxlength="50"
+                                pattern="^[\u4e00-\u9fa5a-zA-Z0-9\s]+$"
+                            >
+                            <div class="input-status">
+                                <i class="icon success">✓</i>
+                                <i class="icon error">✕</i>
+                            </div>
+                        </div>
+                        <div class="form-help">给你的目标起一个简洁明确的名称（4-50个字符）</div>
+                        <div class="form-error">请输入有效的目标名称，只能包含中文、英文、数字和空格</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required">目标类型</label>
+                        <div class="radio-cards">
+                            <label class="radio-card">
+                                <input type="radio" name="goalType" value="daily" checked>
+                                <div class="card-content">
+                                    <div class="card-header">
+                                        <i class="icon">📅</i>
+                                        <span class="title">每日目标</span>
+                                    </div>
+                                    <p class="desc">每天需要完成的固定任务，适合培养日常习惯</p>
+                                    <div class="example">
+                                        <span class="label">示例：</span>
+                                        <span class="text">每天读书1小时、每天写作500字</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="radio-card">
+                                <input type="radio" name="goalType" value="weekly">
+                                <div class="card-content">
+                                    <div class="card-header">
+                                        <i class="icon">📊</i>
+                                        <span class="title">每周目标</span>
+                                    </div>
+                                    <p class="desc">每周需要完成的次数任务，适合规律性活动</p>
+                                    <div class="example">
+                                        <span class="label">示例：</span>
+                                        <span class="text">每周跑步3次、每周健身4次</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="radio-card">
+                                <input type="radio" name="goalType" value="total">
+                                <div class="card-content">
+                                    <div class="card-header">
+                                        <i class="icon">🎯</i>
+                                        <span class="title">累计目标</span>
+                                    </div>
+                                    <p class="desc">12周内需要完成的总量，适合项目或学习任务</p>
+                                    <div class="example">
+                                        <span class="label">示例：</span>
+                                        <span class="text">读完5本书、完成1个项目</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 目标设置 -->
+                <section class="form-section">
+                    <h2 class="section-title">目标设置</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label class="form-label required">开始时间</label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="date" 
+                                    class="form-input" 
+                                    name="startDate"
+                                    required
+                                    min=""
+                                >
+                            </div>
+                            <div class="form-error">请选择有效的开始时间</div>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label class="form-label required">结束时间</label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="date" 
+                                    class="form-input" 
+                                    name="endDate"
+                                    required
+                                    min=""
+                                    max=""
+                                >
+                            </div>
+                            <div class="form-error">结束时间必须在开始时间的12周内</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group target-value-group">
+                        <label class="form-label required">目标数值</label>
+                        <div class="input-group">
+                            <div class="input-wrapper flex-1">
+                                <input 
+                                    type="number" 
+                                    class="form-input" 
+                                    name="targetValue"
+                                    required
+                                    min="1"
+                                    step="1"
+                                >
+                                <div class="input-status">
+                                    <i class="icon success">✓</i>
+                                    <i class="icon error">✕</i>
+                                </div>
+                            </div>
+                            <select class="form-select" name="targetUnit">
+                                <option value="times">次</option>
+                                <option value="hours">小时</option>
+                                <option value="minutes">分钟</option>
+                                <option value="count">个</option>
+                            </select>
+                            <div class="frequency-select" data-type="daily">
+                                <span class="label">/</span>
+                                <select class="form-select" name="targetFrequency">
+                                    <option value="day">每天</option>
+                                    <option value="week">每周</option>
+                                    <option value="total">总计</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-error">请输入有效的目标数值</div>
+                        <div class="target-preview">
+                            预计12周内总计需要完成：<span class="total-value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">目标描述</label>
+                        <div class="input-wrapper">
+                            <textarea 
+                                class="form-input" 
+                                name="description"
+                                rows="4" 
+                                placeholder="描述一下你的目标细节和达成标准"
+                                maxlength="500"
+                            ></textarea>
+                            <div class="textarea-counter">
+                                <span class="current">0</span>/<span class="total">500</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 提醒设置 -->
+                <section class="form-section">
+                    <h2 class="section-title">提醒设置</h2>
+                    
+                    <div class="form-group">
+                        <label class="form-label">每日提醒</label>
+                        <div class="reminder-settings">
+                            <div class="switch-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="dailyReminder">
+                                    <span class="switch-slider"></span>
+                                </label>
+                                <span class="switch-label">开启每日提醒</span>
+                            </div>
+                            <div class="time-select" data-enabled="false">
+                                <input type="time" class="form-input" name="reminderTime" value="09:00">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">进度提醒</label>
+                        <div class="reminder-options">
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="progressReminder">
+                                <div class="card-content">
+                                    <div class="card-header">
+                                        <i class="icon">⚠️</i>
+                                        <span class="title">进度落后提醒</span>
+                                    </div>
+                                    <p class="desc">当进度落后于预期时发送提醒</p>
+                                    <div class="threshold-select">
+                                        <span class="label">落后</span>
+                                        <select class="form-select" name="progressThreshold">
+                                            <option value="10">10%</option>
+                                            <option value="20">20%</option>
+                                            <option value="30">30%</option>
+                                        </select>
+                                        <span class="label">时提醒</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="checkbox-card">
+                                <input type="checkbox" name="milestoneReminder">
+                                <div class="card-content">
+                                    <div class="card-header">
+                                        <i class="icon">🎉</i>
+                                        <span class="title">里程碑提醒</span>
+                                    </div>
+                                    <p class="desc">当达到重要进度节点时发送提醒</p>
+                                    <div class="milestone-options">
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="milestone25" value="25">
+                                            <span class="checkbox-text">25%</span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="milestone50" value="50">
+                                            <span class="checkbox-text">50%</span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="milestone75" value="75">
+                                            <span class="checkbox-text">75%</span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="milestone100" value="100">
+                                            <span class="checkbox-text">100%</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 表单操作 -->
+            <div class="card-footer">
+                <div class="form-actions">
+                    <button type="button" class="btn btn-text" id="cancelBtn">取消</button>
+                    <div class="action-group">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">创建目标</button>
+                        <button type="button" class="btn btn-icon" id="moreActionsBtn">
+                            <i class="icon">▼</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- 预览弹窗 -->
+        <div class="modal" id="previewModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>目标预览</h3>
+                    <button class="btn btn-icon" id="closePreviewBtn">
+                        <i class="icon">✕</i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="preview-card">
+                        <!-- 预览内容将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-text" id="closePreviewBtn2">关闭</button>
+                    <button class="btn btn-primary" id="confirmSubmitBtn">确认创建</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 更多操作下拉菜单 -->
+    <div class="dropdown-menu" id="moreActionsMenu">
+        <button class="dropdown-item">
+            <i class="icon">📋</i>
+            <span>复制为新目标</span>
+        </button>
+        <button class="dropdown-item">
+            <i class="icon">📑</i>
+            <span>保存为模板</span>
+        </button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item text-danger">
+            <i class="icon">🗑️</i>
+            <span>删除</span>
+        </button>
+    </div>
+</body>
+</html> 

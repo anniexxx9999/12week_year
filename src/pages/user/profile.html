@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料 - 12周目标追踪</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <link rel="stylesheet" href="../../styles/user.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-header">
+                <h1>个人资料设置</h1>
+            </div>
+            
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h2>基本信息</h2>
+                    <form id="profileForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="avatar">头像</label>
+                            <div class="avatar-upload">
+                                <img src="../../assets/default-avatar.png" alt="用户头像" id="currentAvatar">
+                                <input type="file" id="avatar" name="avatar" accept="image/*">
+                                <button type="button" class="btn-secondary">更换头像</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">用户名</label>
+                            <input type="text" id="username" name="username" value="当前用户名">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" value="user@example.com" disabled>
+                            <button type="button" class="btn-link">修改邮箱</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">个人简介</label>
+                            <textarea id="bio" name="bio" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">保存修改</button>
+                    </form>
+                </div>
+
+                <div class="profile-section">
+                    <h2>修改密码</h2>
+                    <form id="passwordForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="currentPassword">当前密码</label>
+                            <input type="password" id="currentPassword" name="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">新密码</label>
+                            <input type="password" id="newPassword" name="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmNewPassword">确认新密码</label>
+                            <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+                        </div>
+                        <button type="submit" class="btn-primary">更新密码</button>
+                    </form>
+                </div>
+
+                <div class="profile-section">
+                    <h2>账号安全</h2>
+                    <div class="security-options">
+                        <div class="security-item">
+                            <div class="security-info">
+                                <h3>双重认证</h3>
+                                <p>启用双重认证以提高账号安全性</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="2fa">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="security-item">
+                            <div class="security-info">
+                                <h3>登录设备管理</h3>
+                                <p>查看并管理已登录的设备</p>
+                            </div>
+                            <button class="btn-secondary">查看设备</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../scripts/user.js"></script>
+</body>
+</html> 

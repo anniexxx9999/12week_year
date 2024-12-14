@@ -1,0 +1,618 @@
+/* 表单布局 */
+.form-layout {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+}
+
+.form-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 表单卡片 */
+.form-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--neutral-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--neutral-800);
+}
+
+.card-body {
+    padding: 16px;
+}
+
+/* 富文本编辑器 */
+.rich-editor {
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.editor-toolbar {
+    padding: 8px;
+    border-bottom: 1px solid var(--neutral-200);
+    display: flex;
+    gap: 4px;
+    background-color: var(--neutral-50);
+}
+
+.toolbar-divider {
+    width: 1px;
+    height: 24px;
+    background-color: var(--neutral-200);
+    margin: 0 4px;
+}
+
+.editor-content {
+    min-height: 200px;
+    padding: 12px;
+    outline: none;
+}
+
+/* 任务类型选择器 */
+.task-type-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.type-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.type-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.type-card .card-content {
+    padding: 16px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.type-card:hover .card-content {
+    border-color: var(--primary-400);
+    background-color: var(--primary-50);
+}
+
+.type-card input[type="radio"]:checked + .card-content {
+    border-color: var(--primary-500);
+    background-color: var(--primary-100);
+}
+
+.type-card .card-header {
+    padding: 0;
+    border: none;
+    margin-bottom: 8px;
+}
+
+.type-card .title {
+    font-weight: 500;
+    color: var(--neutral-900);
+}
+
+.type-card .desc {
+    font-size: 12px;
+    color: var(--neutral-600);
+}
+
+/* 重复任务设置 */
+.frequency-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.weekday-selector {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.weekday-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.weekday-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.weekday-item span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--neutral-700);
+    transition: all 0.3s;
+}
+
+.weekday-item:hover span {
+    border-color: var(--primary-400);
+    background-color: var(--primary-50);
+}
+
+.weekday-item input[type="checkbox"]:checked + span {
+    background-color: var(--primary-500);
+    border-color: var(--primary-500);
+    color: white;
+}
+
+/* 子任务列表 */
+.subtask-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.subtask-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border: 1px solid var(--neutral-200);
+    border-radius: 6px;
+    background-color: white;
+}
+
+.drag-handle {
+    cursor: grab;
+    color: var(--neutral-400);
+    user-select: none;
+}
+
+.subtask-item:active .drag-handle {
+    cursor: grabbing;
+}
+
+.subtask-item .form-input {
+    flex: 1;
+    border: none;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.subtask-item .form-input:focus {
+    outline: none;
+}
+
+/* 文件上传 */
+.upload-area {
+    border: 2px dashed var(--neutral-300);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-400);
+    background-color: var(--primary-50);
+}
+
+.upload-area.drag-over {
+    border-color: var(--primary-500);
+    background-color: var(--primary-100);
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.upload-content .icon {
+    font-size: 32px;
+    color: var(--neutral-400);
+}
+
+.upload-tip {
+    font-size: 12px;
+    color: var(--neutral-500);
+}
+
+.file-list {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border: 1px solid var(--neutral-200);
+    border-radius: 6px;
+    background-color: var(--neutral-50);
+}
+
+.file-icon {
+    font-size: 24px;
+}
+
+.file-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.file-name {
+    font-size: 14px;
+    color: var(--neutral-900);
+    margin-bottom: 4px;
+}
+
+.file-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--neutral-500);
+}
+
+/* 优先级选择器 */
+.priority-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.priority-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.priority-item input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.priority-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.priority-item:hover .priority-content {
+    border-color: var(--primary-400);
+    background-color: var(--primary-50);
+}
+
+.priority-item input[type="radio"]:checked + .priority-content {
+    border-color: var(--primary-500);
+    background-color: var(--primary-100);
+}
+
+.priority-content.high {
+    color: var(--error-600);
+}
+
+.priority-content.medium {
+    color: var(--warning-600);
+}
+
+.priority-content.low {
+    color: var(--success-600);
+}
+
+/* 提醒设置 */
+.reminder-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.switch-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--neutral-300);
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.switch-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.switch input:checked + .switch-slider {
+    background-color: var(--primary-500);
+}
+
+.switch input:checked + .switch-slider:before {
+    transform: translateX(20px);
+}
+
+/* 目标选择器 */
+.goal-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.selected-goal {
+    padding: 12px;
+    border: 1px solid var(--neutral-200);
+    border-radius: 6px;
+    background-color: var(--neutral-50);
+}
+
+.goal-info {
+    flex: 1;
+}
+
+.goal-name {
+    display: block;
+    font-size: 14px;
+    color: var(--neutral-700);
+    margin-bottom: 8px;
+}
+
+.progress {
+    height: 4px;
+    background-color: var(--neutral-200);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-500);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 12px;
+    color: var(--neutral-500);
+}
+
+/* 标签选择器 */
+.tag-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.remove-tag {
+    padding: 2px;
+    border: none;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.remove-tag:hover {
+    opacity: 1;
+}
+
+.tag-input-wrapper {
+    position: relative;
+}
+
+.tag-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.tag-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 4px;
+    z-index: 100;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: var(--neutral-100);
+}
+
+.tag-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+}
+
+.suggestion-divider {
+    height: 1px;
+    background-color: var(--neutral-200);
+    margin: 4px 0;
+}
+
+.suggestion-item.create {
+    color: var(--primary-600);
+}
+
+/* 颜色选择器 */
+.color-picker {
+    padding: 8px;
+    border: 1px solid var(--neutral-300);
+    border-radius: 6px;
+}
+
+.color-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.color-option {
+    position: relative;
+    cursor: pointer;
+}
+
+.color-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.color-preview {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.color-option:hover .color-preview {
+    transform: scale(1.1);
+}
+
+.color-option input[type="radio"]:checked + .color-preview {
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 2px var(--primary-100);
+}
+
+/* 响应式布局 */
+@media (max-width: 1024px) {
+    .form-layout {
+        flex-direction: column;
+    }
+
+    .form-sidebar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .task-type-selector {
+        grid-template-columns: 1fr;
+    }
+
+    .weekday-selector {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-layout {
+        padding: 16px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .subtask-item {
+        flex-wrap: wrap;
+    }
+
+    .file-item {
+        flex-wrap: wrap;
+    }
+} 
